@@ -314,5 +314,8 @@ vendor.usb.use_ffs_mtp=1
 vendor.usb.use_gadget_hal=1
 sys.usb.mtp.batchcancel=1
 
+# Verity
+ro.apk_verity.mode=2
+
 # WiFi
 wifi.aware.interface=wifi-aware0
