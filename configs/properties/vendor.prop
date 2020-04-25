@@ -66,6 +66,9 @@ vendor.hw.fm.init=0
 camera.disable_zsl_mode=1
 ro.camera.enableCamera1MaxZsl=1
 
+# Dex2oat
+dalvik.vm.dex2oat64.enabled=true
+
 # Display
 vendor.display.comp_mask=0
 vendor.display.disable_3d_adaptive_tm=1
