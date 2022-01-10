@@ -89,6 +89,15 @@ vendor.display.idle_time=0
 vendor.display.use_smooth_motion=1
 vendor.display.vds_allow_hwc=true
 
+# Display (Phase Offsets)
+debug.sf.use_phase_offsets_as_durations=1
+debug.sf.early.app.duration=13666666
+debug.sf.early.sf.duration=10500000
+debug.sf.earlyGl.app.duration=13666666
+debug.sf.earlyGl.sf.duration=10500000
+debug.sf.late.app.duration=13666666
+debug.sf.late.sf.duration=10500000
+
 # DPM
 persist.vendor.dpm.vndr.idletimer.mode=default
 persist.vendor.dpm.vndr.halservice.enable=1
@@ -122,10 +131,6 @@ debug.sf.enable_hwc_vds=false
 debug.egl.hw=0
 debug.sf.auto_latch_unsignaled=0
 debug.sf.latch_unsignaled=1
-debug.sf.high_fps_late_app_phase_offset_ns=1000000
-debug.sf.high_fps_late_sf_phase_offset_ns=-2000000
-debug.sf.high_fps_early_phase_offset_ns=-4000000
-debug.sf.high_fps_early_gl_phase_offset_ns=-2000000
 debug.sf.disable_client_composition_cache=1
 debug.sf.enable_gl_backpressure=0
 debug.sf.predict_hwc_composition_strategy=0
