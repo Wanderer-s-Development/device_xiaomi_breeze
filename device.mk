@@ -157,12 +157,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     FM2
 
-# F2FS utilities
-PRODUCT_PACKAGES += \
-    sg_write_buffer \
-    f2fs_io \
-    check_f2fs
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti:64 \
