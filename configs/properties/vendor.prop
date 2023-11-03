@@ -92,11 +92,11 @@ vendor.display.vds_allow_hwc=true
 # Display (Phase Offsets)
 debug.sf.use_phase_offsets_as_durations=1
 debug.sf.early.app.duration=13666666
-debug.sf.early.sf.duration=10500000
+debug.sf.early.sf.duration=15666666
 debug.sf.earlyGl.app.duration=13666666
-debug.sf.earlyGl.sf.duration=10500000
+debug.sf.earlyGl.sf.duration=15666666
 debug.sf.late.app.duration=13666666
-debug.sf.late.sf.duration=10500000
+debug.sf.late.sf.duration=15666666
 
 # DPM
 persist.vendor.dpm.vndr.idletimer.mode=default
