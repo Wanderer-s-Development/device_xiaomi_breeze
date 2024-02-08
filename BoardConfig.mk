@@ -216,7 +216,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # VINTF
 DEVICE_MANIFEST_SKUS := ravelin
-DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_RAVELIN_FILES := \
     $(DEVICE_PATH)/configs/vintf/manifest_ravelin.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
