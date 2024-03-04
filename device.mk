@@ -266,9 +266,13 @@ PRODUCT_PACKAGES += \
     LineageSettingsOverlayBreeze \
     LineageSettingsProviderOverlayBreeze \
     SettingsOverlayBreeze \
+    SettingsProviderOverlayBreezePoco \
+    SettingsProviderOverlayBreezeRedmi \
     SystemUIOverlayBreeze \
     TelephonyOverlayBreeze \
-    WifiOverlayBreeze
+    WifiOverlayBreeze \
+    WifiOverlayBreezePoco \
+    WifiOverlayBreezeRedmi
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay

@@ -67,9 +67,6 @@
      the device interface combination allows for it -->
     <bool translatable="false" name="config_wifiBridgedSoftApSupported">false</bool>
 
-    <!-- Do not translate. Default access point SSID used for tethering -->
-    <string name="wifi_tether_configure_ssid_default" translatable="false">Breeze</string>
-
     <!-- Wifi driver Automatic channel selection (ACS) for softap to include DFS channels -->
     <bool translatable="false" name="config_wifiSoftapAcsIncludeDfs">false</bool>
 
