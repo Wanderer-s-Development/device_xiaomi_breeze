@@ -1,7 +1,14 @@
-type vendor_displayfeature_device, dev_type;
+# Audio
 type sound_device, dev_type, mlstrustedobject;
-type vendor_fingerprint_device, dev_type;
-type touchfeature_device, dev_type;
-type vendor_radio_smd_device, dev_type;
-type minidump_data_file, data_file_type, file_type;
 
+# Display
+type vendor_displayfeature_device, dev_type;
+
+# Fingerprint
+type vendor_fingerprint_device, dev_type;
+
+# Modem
+type vendor_radio_smd_device, dev_type;
+
+# Touchscreen
+type touchfeature_device, dev_type;
