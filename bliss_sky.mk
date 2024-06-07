@@ -15,6 +15,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit common Bliss configurations
 $(call inherit-product, vendor/bliss/config/common_full_phone.mk)
 
+$(call inherit-product, vendor/bliss/config/BoardConfigReservedSize.mk)
+
 # Inherit device configurations
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
