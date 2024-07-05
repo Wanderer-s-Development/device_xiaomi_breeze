@@ -260,8 +260,6 @@ vendor.gralloc.disable_ubwc=0
 debug.c2.use_dmabufheaps=1
 debug.mdpcomp.logs=0
 debug.stagefright.c2inputsurface=-1
-debug.stagefright.ccodec=4
-debug.stagefright.omx_default_rank=0
 vendor.mm.enable.qcom_parser=16777215
 vendor.media.omx=0
 
