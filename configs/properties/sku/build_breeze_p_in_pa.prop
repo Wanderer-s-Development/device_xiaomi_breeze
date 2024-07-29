@@ -1,0 +1,10 @@
+# Bluetooth
+bluetooth.device.default_name=POCO M6 Plus 5G
+
+# Device
+ro.product.odm.brand=POCO
+ro.product.odm.model=24066PC95I
+ro.product.odm.name=breeze_p_in
+
+# USB
+vendor.usb.product_string=POCO M6 Plus 5G

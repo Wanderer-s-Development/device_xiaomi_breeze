@@ -1,0 +1,10 @@
+# Bluetooth
+bluetooth.device.default_name=Redmi 13 5G
+
+# Device
+ro.product.odm.brand=Redmi
+ro.product.odm.model=2406ERN9CI
+ro.product.odm.name=breeze_in
+
+# USB
+vendor.usb.product_string=Redmi 13 5G

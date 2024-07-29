@@ -195,6 +195,9 @@ persist.vendor.sensors.support_direct_channel=false
 # SOC
 ro.soc.manufacturer=QTI
 
+# System properties
+ro.product.property_source_order=odm,product,vendor,system_ext,system
+
 # USB
 sys.usb.mtp.batchcancel=1
 vendor.usb.diag.func.name=ffs

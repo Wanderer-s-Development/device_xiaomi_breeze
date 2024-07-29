@@ -320,6 +320,11 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi
 
+# System properties
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/properties/sku/build_breeze_in_pa.prop:$(TARGET_COPY_OUT_ODM)/etc/build_breeze_in_pa.prop \
+    $(LOCAL_PATH)/configs/properties/sku/build_breeze_p_in_pa.prop:$(TARGET_COPY_OUT_ODM)/etc/build_breeze_p_in_pa.prop
+
 # Telephony
 PRODUCT_PACKAGES += \
     extphonelib \
