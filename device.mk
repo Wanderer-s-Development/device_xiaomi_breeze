@@ -489,7 +489,9 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
     hardware/bliss/interfaces/power-libperfmgr \
+    hardware/google \
     hardware/google/interfaces \
+    hardware/google/pixel \
     hardware/google/pixel/power-libperfmgr/libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/xiaomi
