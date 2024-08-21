@@ -1,5 +1,2 @@
 # DPM
 persist.vendor.dpm.feature=1
-
-# RIL
-telephony.active_modems.max_count=2
