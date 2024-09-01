@@ -27,12 +27,6 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.xiaomi u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/vendor\.silead\.hardware\.fingerprintext@1\.0-service  u:object_r:hal_fingerprint_default_exec:s0
 
-
-# GNSS
-/data/vendor/ins(/.*)? u:object_r:vendor_ins_vendor_data_file:s0
-/data/vendor/qxwz(/.*)? u:object_r:qx_oss_vendor_data_file:s0
-/mnt/vendor/persist/qxwz u:object_r:qx_oss_vendor_data_file:s0
-
 # Health
 /vendor/bin/hw/android\.hardware\.health-service\.xiaomi                  u:object_r:hal_health_default_exec:s0
 
