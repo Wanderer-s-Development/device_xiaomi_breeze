@@ -131,6 +131,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.7.vendor \
     libcamera_metadata.vendor \
     libexif.vendor \
+    libpiex.vendor \
     libutilscallstack.vendor \
     libyuv.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
