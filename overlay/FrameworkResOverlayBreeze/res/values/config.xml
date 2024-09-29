@@ -262,41 +262,6 @@
         M 0,0 H -35 V 104 H 35 V 0 H 0 Z
     </string>
 
-
-	<!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
-         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
-         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
-         and Strength as defined in Authenticators.java -->
-    <string-array name="config_biometric_sensors" translatable="false" >
-        <!-- ID0:Fingerprint:Strong -->
-        <item>0:2:15</item>
-    </string-array>
-
-    <!-- Indicates whether device has a power button fingerprint sensor. -->
-    <bool name="config_is_powerbutton_fps">true</bool>
-
-    <!-- An array of arrays of side fingerprint sensor properties relative to each display.
-         Note: this value is temporary and is expected to be queried directly
-         from the HAL in the future. -->
-    <array name="config_sfps_sensor_props">
-        <item>@array/config_sfps_sensor_props_0</item>
-        <item>@array/config_sfps_sensor_props_1</item>
-    </array>
-
-    <array name="config_sfps_sensor_props_0">
-        <item>local:4630946631629285761</item>     <!-- displayId -->
-        <item>1080</item> <!-- sensorLocationX -->
-        <item>1000</item>  <!-- sensorLocationY -->
-        <item>110</item>  <!-- sensorRadius -->
-    </array>
-
-    <array name="config_sfps_sensor_props_1">
-        <item>local:4630947026014137729</item>     <!-- displayId -->
-        <item>1080</item> <!-- sensorLocationX -->
-        <item>1000</item>  <!-- sensorLocationY -->
-        <item>110</item>  <!-- sensorRadius -->
-    </array>
-
     <!-- Location on the screen of the center of the physical power button. -->
     <dimen name="physical_power_button_center_screen_location_y">1000px</dimen>
 
