@@ -106,6 +106,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'vendor.qti.hardware.display.config-V2-ndk_platform.so', 'vendor.qti.hardware.display.config-V2-ndk.so'
         ),
+    ('vendor/lib64/libqcrilNr.so', 'vendor/lib64/libril-db.so'): blob_fixup()
+        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
     'vendor/lib64/libhme.so': blob_fixup()
         .replace_needed(
             'libstdc++.so', 'libstdc++_vendor.so'
