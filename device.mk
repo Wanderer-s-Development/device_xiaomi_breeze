@@ -289,6 +289,10 @@ PRODUCT_COPY_FILES += \
 
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libperfmgr-ext-breeze)
 
+# QMI
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti_vendor:64 # Needed by CNE app
+
 # RRO Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayBreeze \
