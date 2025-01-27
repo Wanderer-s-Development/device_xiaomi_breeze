@@ -193,7 +193,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.default
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/init/etc/fstab.default
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_USES_RECOVERY_AS_BOOT := false
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
@@ -220,10 +220,6 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
 
 #SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
 #    $(DEVICE_PATH)/sepolicy/public/xiaomi/devicesettings
-
-# Vendor Boot
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/rootdir/etc/fstab.default:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.default
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

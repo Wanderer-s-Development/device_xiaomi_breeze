@@ -220,6 +220,26 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
+# Init
+PRODUCT_PACKAGES += \
+    fstab.default \
+    fstab.default.vendor_ramdisk
+
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.kernel.post_boot.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sh
+
+PRODUCT_PACKAGES += \
+    init.breeze.rc \
+    init.qcom.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc \
+    ueventd-odm.rc
+
 # Input
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/usr/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/uinput-fpc.idc \
@@ -273,22 +293,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
-# Rootdir
-PRODUCT_PACKAGES += \
-    charger_fw_fstab.qti \
-    fstab.default \
-    init.class_main.sh \
-    init.kernel.post_boot.sh \
-    init.breeze.rc \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.rc \
-    init.qcom.sh \
-    init.target.rc \
-    ueventd.qcom.rc \
-    ueventd-odm.rc \
-    init.recovery.qcom.rc
 
 # RRO Overlays
 PRODUCT_PACKAGES += \
@@ -362,7 +366,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
-
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -445,5 +448,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
-
-
