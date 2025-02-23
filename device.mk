@@ -281,7 +281,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.kernel.post_boot.sh \
     init.breeze.rc \
-    init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
