@@ -86,14 +86,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.goodix.hardware.biometrics.fingerprint</name>
-        <version>2.1</version>
+        <name>vendor.silead.hardware.fingerprintext</name>
+        <version>1.0</version>
         <interface>
-            <name>IGoodixFingerprintDaemon</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IGoodixFingerprintDaemonExt</name>
+            <name>ISileadFingerprint</name>
             <instance>default</instance>
         </interface>
     </hal>

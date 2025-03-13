@@ -631,7 +631,7 @@ vendor/lib64/libanc_night.so
 vendor/lib64/libanc_single_bokeh.so
 vendor/lib64/libanc_single_bokeh_rear.so
 vendor/lib64/libSNPE.so
-vendor/lib64/libTrueSight.so
+vendor/lib64/libTrueSight.so;DISABLE_CHECKELF
 vendor/lib64/libanc_single_rt_bokeh.so
 vendor/lib64/libbitmlengine.so
 vendor/lib64/libbitmlenginev2.so
@@ -1007,12 +1007,18 @@ vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
-# Fingerprint
-vendor/lib64/hw/fingerprint.goodix.so:vendor/lib64/hw/fingerprint.goodix.default.so
-vendor/lib64/com.fingerprints.extension@1.0.so:vendor/lib64/com.fingerprints.extension@1.0_vendor.so;FIX_SONAME
+# Fingerprint (Goodix)
+vendor/lib64/hw/fingerprint.goodix.so:vendor/lib64/hw/fingerprint.goodix.default.so;FIX_SONAME
 vendor/lib64/libgf_ca.so
 vendor/lib64/libgf_hal.so
 vendor/lib64/libgoodixhwfingerprint.so;DISABLE_CHECKELF
+
+# Fingerprint (Silead)
+vendor/bin/hw/vendor.silead.hardware.fingerprintext@1.0-service
+vendor/etc/init/vendor.silead.hardware.fingerprintext@1.0-service.rc
+vendor/lib64/hw/fingerprint.silead.so:vendor/lib64/hw/fingerprint.silead.default.so;FIX_SONAME
+vendor/lib64/libsl_fp_impl.so
+vendor/lib64/vendor.silead.hardware.fingerprintext@1.0.so
 
 # FM
 system/lib64/vendor.qti.hardware.fm-V1-ndk.so
@@ -1149,6 +1155,7 @@ vendor/firmware/gen6_3_26_0_zap.elf
 vendor/firmware/gen6_3_26_0_zap.mbn
 vendor/firmware/gen6_3_26_0_zap.mdt
 vendor/firmware/gmu_gen70000.bin
+vendor/firmware/sipa.bin
 
 # Graphics (Vulkan)
 vendor/lib/hw/vulkan.adreno.so

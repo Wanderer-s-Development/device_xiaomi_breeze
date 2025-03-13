@@ -97,8 +97,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/qcc-trd': blob_fixup()
         .replace_needed(
             'libgrpc++_unsecure.so', 'libgrpc++_unsecure_prebuilt.so'
-        ),
-    'vendor/lib64/hw/fingerprint.fpc.default.so': blob_fixup()
+        )
         .replace_needed(
             'com.fingerprints.extension@1.0.so', 'com.fingerprints.extension@1.0_vendor.so'
         ),
@@ -130,6 +129,7 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('gettid: 1'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
+    'vendor/lib64/hw/fingerprint.silead.default.so': blob_fixup(),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

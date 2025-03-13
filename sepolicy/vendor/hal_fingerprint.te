@@ -24,3 +24,6 @@ get_prop(hal_fingerprint_default, vendor_adsprpc_prop)
 get_prop(hal_fingerprint_default, vendor_panel_info_prop)
 set_prop(hal_fingerprint_default, vendor_fp_prop)
 set_prop(hal_fingerprint_default, vendor_fp_info_prop)
+
+allow hal_fingerprint_default vendor_sysfs_battery_supply:dir { search };
+allow hal_fingerprint_default vendor_sysfs_battery_supply:file { open read };
