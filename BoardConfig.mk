@@ -268,12 +268,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/xiaomi_framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
-ODM_MANIFEST_SKUS += hceese hcesim hcesim1 hcesim1ese hcesimese
-ODM_MANIFEST_HCEESE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hceese.xml
-ODM_MANIFEST_HCESIM_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hcesim.xml
-ODM_MANIFEST_HCESIM1_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hcesim1.xml
-ODM_MANIFEST_HCESIM1ESE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hcesim1ese.xml
-ODM_MANIFEST_HCESIMESE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hcesimese.xml
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
