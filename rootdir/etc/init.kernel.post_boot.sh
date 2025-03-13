@@ -1,6 +1,6 @@
 
 #=============================================================================
-# Copyright (c) 2019-2022 Qualcomm Technologies, Inc.
+# Copyright (c) 2019-2023 Qualcomm Technologies, Inc.
 # All Rights Reserved.
 # Confidential and Proprietary - Qualcomm Technologies, Inc.
 #
@@ -149,7 +149,7 @@ if [ -f /sys/devices/soc0/soc_id ]; then
 fi
 
 case "$platformid" in
-	"537" | "583" | "613")
+	"537" | "583" | "613" | "631" | "633" | "634" | "638")
 		/vendor/bin/sh /vendor/bin/init.kernel.post_boot-parrot.sh
 		;;
 	"568" | "602" | "581" | "582")

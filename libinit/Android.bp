@@ -5,7 +5,7 @@
 //
 
 cc_library_static {
-    name: "libinit_xiaomi_sky",
+    name: "libinit_xiaomi_breeze",
     srcs: [
         "libinit_variant.cpp",
         "libinit_utils.cpp",
@@ -16,9 +16,9 @@ cc_library_static {
 }
 
 cc_library_static {
-    name: "init_xiaomi_sky",
-    srcs: ["init_xiaomi_sky.cpp"],
-    whole_static_libs: ["libinit_xiaomi_sky"],
+    name: "init_xiaomi_breeze",
+    srcs: ["init_xiaomi_breeze.cpp"],
+    whole_static_libs: ["libinit_xiaomi_breeze"],
     include_dirs: ["system/core/init"],
     recovery_available: true,
 }

@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/sky
+DEVICE_PATH := device/xiaomi/breeze
 
 # Configure core_64_bit.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -12,24 +12,22 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 # Configure full_base_telephony.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit common Bliss configurations
-$(call inherit-product, vendor/bliss/config/common_full_phone.mk)
+# Inherit common lineage configurations
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-$(call inherit-product, vendor/bliss/config/BoardConfigReservedSize.mk)
+$(call inherit-product, vendor/lineage/config/BoardConfigReservedSize.mk)
 
 # Inherit device configurations
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 # Inherit from the proprietary version
-$(call inherit-product, vendor/xiaomi/sky/sky-vendor.mk)
-
-BLISS_BUILDTYPE := OFFICIAL
+$(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
 ## Device identifier
-PRODUCT_DEVICE := sky
-PRODUCT_NAME := bliss_sky
-PRODUCT_BRAND := Redmi
-PRODUCT_MODEL := 23076RN4BI
+PRODUCT_DEVICE := breeze
+PRODUCT_NAME := lineage_breeze
+PRODUCT_BRAND := POCO
+PRODUCT_MODEL := 24066PC95I
 PRODUCT_MANUFACTURER := Xiaomi
 
 # GMS

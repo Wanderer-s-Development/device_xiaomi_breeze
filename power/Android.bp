@@ -1,5 +1,5 @@
 cc_library_static {
-    name: "libperfmgr-ext-sky",
+    name: "libperfmgr-ext-breeze",
     vendor: true,
     srcs: [
         "power-mode.cpp",

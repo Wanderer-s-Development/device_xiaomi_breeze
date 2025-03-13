@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/xiaomi/sky
+DEVICE_PATH := device/xiaomi/breeze
 
 # Inherit virtual_ab_ota_product.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -13,7 +13,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Call the proprietary setup.
-$(call inherit-product, vendor/xiaomi/sky/sky-vendor.mk)
+$(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
@@ -328,7 +328,7 @@ PRODUCT_PACKAGES += \
     fstab.default \
     init.class_main.sh \
     init.kernel.post_boot.sh \
-    init.sky.rc \
+    init.breeze.rc \
     init.qcom.class_core.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
@@ -388,7 +388,7 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
-    hardware/bliss/interfaces/power-libperfmgr \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/google \
     hardware/google/interfaces \
     hardware/google/pixel \

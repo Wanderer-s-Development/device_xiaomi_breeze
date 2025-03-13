@@ -137,22 +137,6 @@ on boot
     mkdir /mnt/vendor/persist/iar_db 0770 system system
     mkdir /mnt/vendor/spunvm 0770 system system
 
-    restorecon_recursive /mnt/vendor/persist
-    chown system system /mnt/vendor/persist
-    chmod 0777 /mnt/vendor/persist
-    mkdir /mnt/vendor/persist/camera
-    chown system system /mnt/vendor/persist/camera
-    chmod 0777 /mnt/vendor/persist/camera
-    mkdir /data/vendor/camera
-    chown system system /data/vendor/camera
-    chmod 0777 /data/vendor/camera
-    chmod 0666 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
-    chmod 0666 /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
-    chmod 0666 /data/vendor/camera/com.xiaomi.dcal.wd.data
-    chmod 0666 /data/vendor/camera/com.xiaomi.dcal.wu.data
-    chown system system /data/vendor/camera/com.xiaomi.dcal.wd.data
-    chown system system /data/vendor/camera/com.xiaomi.dcal.wu.data
-
     #Create WIGIG socket area
     mkdir /dev/socket/wigig 0770 wifi wifi
 
@@ -196,18 +180,12 @@ on boot
     chmod 0640 /sys/module/msm_drm/parameters/dsi_display1
 
     chown system system /sys/class/backlight/panel0-backlight/brightness
-    chown system system /sys/class/backlight/panel0-backlight/brightness_clone
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
     chown system system /sys/class/backlight/panel1-backlight/brightness
     chown system system /sys/class/backlight/panel1-backlight/max_brightness
 
     chmod 0664 /sys/class/display/backlight_clone/brightness_clone
     chown system system /sys/class/display/backlight_clone/brightness_clone
-
-    chmod 0644 /sys/class/display/disp_param/panel_info
-    chown system system /sys/class/display/disp_param/panel_info
-    chmod 0664 /sys/class/display/disp_param/disp_param
-    chown system system /sys/class/display/disp_param/disp_param
 
     # Allow access to sensors device attributes
     chown system system /sys/class/sensors/MPU6050-accel/enable
@@ -219,7 +197,7 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
-    #Add for ir
+    # N19 4450pro IR bringup
     chown system system /dev/ir_spi
     chmod 0666 /dev/ir_spi
 
@@ -232,13 +210,17 @@ on boot
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
     #Make MTU adjusting
-    write /proc/sys/net/ipv4/tcp_mtu_probing 2
+    write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
     # limit discard size to 128MB in order to avoid long IO latency
     write /sys/block/sda/queue/discard_max_bytes 134217728
+
+    # chown for flashlight
+    chown system system sys/class/camera/factory_test_flash/rear_flash
+    chmod 0664 sys/class/camera/factory_test_flash/rear_flash
 
 # msm specific files that need to be created on /data
 on post-fs-data
@@ -268,15 +250,7 @@ on post-fs-data
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
 
-
-    #Create directory for tftp
-    mkdir /data/vendor/tombstones 0771 system system
-    mkdir /data/vendor/tombstones/rfs 0771 system system
-
-    mkdir /data/vendor/ramdump 0771 root system
-    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
-    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
-
+    # add for HQ-351317 by wupeng at 2024/1/10 start
     #Create the directories used by the subsystem_ramdump
     mkdir /data/vendor/bsplog 0771 root system
     mkdir /data/vendor/bsplog/modem 0771 root system
@@ -294,10 +268,18 @@ on post-fs-data
     mkdir /data/vendor/bsplog/other 0771 root system
     mkdir /data/vendor/bsplog/other/ssr_dump 0771 root system
 
-    #enabled modem/adsp/cdsp coredump
-    write sys/class/remoteproc/remoteproc2/coredump  enabled
+    #enabled modem coredump
     write sys/class/remoteproc/remoteproc1/coredump  enabled
+    write sys/class/remoteproc/remoteproc2/coredump  enabled
     write sys/class/remoteproc/remoteproc0/coredump  enabled
+    # add for HQ-351317 by wupeng at 2024/1/10 end
+    #Create directory for tftp
+    mkdir /data/vendor/tombstones 0771 system system
+    mkdir /data/vendor/tombstones/rfs 0771 system system
+
+    mkdir /data/vendor/ramdump 0771 root system
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
@@ -323,6 +305,9 @@ on post-fs-data
     # Create directory for audio delta files
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
+
+    # Create directory for audio dump files
+    mkdir /data/vendor/audio/audiodump 0777 media audio
 
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
@@ -429,6 +414,44 @@ service nqnfcinfo /system/vendor/bin/nqnfcinfo
     user system
     oneshot
 
+#Added by huyuwang in HQ-351828 for wlantcpdump start
+service vendor.cnss_diag /vendor/bin/cnss_diag -q -f
+    class late_start
+    user system
+    group system wifi inet net_admin sdcard_rw media_rw diag
+    disabled
+    oneshot
+service vendor.tcpdump /vendor/bin/tcpdump -i any -W 2 -C 30 -s 0 -w /data/vendor/wlan_logs/tcpdump.pcap
+    class main
+    user root
+    group root wifi
+    disabled
+service sniffer /vendor/bin/tcpdump -i wlan0 -w /data/vendor/wlan_logs/sniffer.pcap
+    class main
+    user root
+    group root
+    disabled
+on property:sys.user.0.ce_available=true
+    chmod 0664 /data/vendor/wlan_logs/tcpdump.pcap0
+    chown system root /data/vendor/wlan_logs/tcpdump.pcap0
+    chmod 0664 /data/vendor/wlan_logs/tcpdump.pcap1
+    chown system root /data/vendor/wlan_logs/tcpdump.pcap1
+    start vendor.cnss_diag
+    start vendor.tcpdump
+service vendor.startpktlog /vendor/bin/iwpriv wlan0 pktlog 2
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+service vendor.stoppktlog /vendor/bin/iwpriv wlan0 pktlog 0
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+#Added by huyuwang in HQ-351828 for wlantcpdump end
+
 service iop /system/vendor/bin/iop
     class main
     user root
@@ -452,12 +475,14 @@ service vendor.ssr_setup /system/vendor/bin/ssr_setup
     oneshot
     disabled
 
+# modify for HQ-351317 by wupeng at 2024/1/10 start
 service vendor.ss_ramdump /vendor/bin/subsystem_ramdump 3
     class main
     user system
     group system everybody root sdcard_rw
     ioprio rt 4
     disabled
+# modify for HQ-351317 by wupeng at 2024/1/10 end
 
 on property:ro.vendor.iocgrp.config=1
     mkdir /dev/blkio
@@ -482,10 +507,6 @@ on property:persist.sys.modem_auth_timeout=*
 
 on property:persist.sys.pil_proxy_timeout=*
     write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
-
-    # wcnssr enable
-    write /sys/class/remoteproc/remoteproc2/recovery enabled
-    #write /sys/bus/msm_subsys/devices/subsys2/restart_level related
 
 on property:persist.vendor.ssr.restart_level=*
     start vendor.ssr_setup
@@ -581,8 +602,7 @@ service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwigig0 -Dnl80211 -c/data/vendor/wifi/wigig_supplicant.conf \
     -m/data/vendor/wifi/wigig_p2p_supplicant.conf \
     -O/data/vendor/wifi/wigig_sockets -dd \
-    -e/data/vendor/wifi/wigig_entropy.bin -g@android:wigig/wpa_wigig0 \
-    -S wigigsvc
+    -e/data/vendor/wifi/wigig_entropy.bin -g@android:wigig/wpa_wigig0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
     #   user wifi
@@ -658,49 +678,6 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
     class late_start
     disabled
     oneshot
-
-#ExtR HONGMI-163930 yangziqiang 20230302 add for capture wifi full log start
-service vendor.tcpdump /vendor/bin/tcpdump -i any -W 2 -C 2 -s 134 -w /data/vendor/wlan_logs/tcpdump.pcap
-    class main
-    user root
-    group root wifi
-    disabled
-    oneshot
-
-service sniffer /vendor/bin/tcpdump -i wlan0 -w /data/vendor/wlan_logs/sniffer.pcap
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
-on property:persist.vendor.tcpdump.enable=false
-    stop vendor.tcpdump
-
-on property:persist.vendor.tcpdump.enable=true
-   start vendor.tcpdump
-
-#on property:sys.user.0.ce_available=false
-#    stop vendor.tcpdump
-
-#on property:sys.user.0.ce_available=true
-#    start vendor.tcpdump
-
-service startpktlog /vendor/bin/iwpriv wlan0 pktlog 2
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
-service stoppktlog /vendor/bin/iwpriv wlan0 pktlog 0
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
-#ExtR HONGMI-163930 yangziqiang 20230302 add for capture wifi full log start
 
 service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
     class main
@@ -847,7 +824,7 @@ service vendor.ssr_diag /system/vendor/bin/ssr_diag
     group system
     disabled
 
-service diag_mdlog_start /system/vendor/bin/diag_mdlog -q 0x2 -u -c -n 50
+service diag_mdlog_start /system/vendor/bin/diag_mdlog
     class late_start
     user shell
     group system oem_2901 sdcard_rw sdcard_r media_rw
@@ -981,6 +958,7 @@ on property:vendor.opengles.version=*
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
+#Set debugfs to true in user root
 on property:sys.boot_completed=1 && property:ro.product.debugfs_restrictions.enabled=true && \
    property:persist.dbg.keep_debugfs_mounted="" && property:ro.debuggable="1"
    setprop persist.dbg.keep_debugfs_mounted 1

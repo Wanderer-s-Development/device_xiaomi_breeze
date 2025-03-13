@@ -5,9 +5,9 @@
 #
 
 # Inherit from the proprietary version
--include vendor/xiaomi/sky/BoardConfigVendor.mk
+-include vendor/xiaomi/breeze/BoardConfigVendor.mk
 
-DEVICE_PATH := device/xiaomi/sky
+DEVICE_PATH := device/xiaomi/breeze
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
 # A/B
@@ -61,7 +61,7 @@ SOONG_CONFIG_ufsbsg += ufsframework
 SOONG_CONFIG_ufsbsg_ufsframework := bsg
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sky
+TARGET_BOOTLOADER_BOARD_NAME := breeze
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
@@ -87,7 +87,7 @@ TARGET_ENABLE_MEDIADRM_64 := true
 # DTB
 BOARD_USES_DT := true
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbs/dtbo.img
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/config.fs
@@ -100,7 +100,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 $(call soong_config_set, qtilocation, feature_nhz, false)
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_sky
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_breeze
 
 # Kernel
 BOARD_KERNEL_PAGESIZE := 4096
@@ -109,8 +109,8 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
-    swinfo.fingerprint=$(BLISS_VERSION) \
-    mtdoops.fingerprint=$(BLISS_VERSION)
+    swinfo.fingerprint=$(LINEAGE_VERSION) \
+    mtdoops.fingerprint=$(LINEAGE_VERSION)
 
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
@@ -135,7 +135,7 @@ TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
 
 # Kernel Binary
 TARGET_KERNEL_VERSION := 5.10
-LOCAL_KERNEL := $(KERNEL_PATH)/Image
+LOCAL_KERNEL := $(KERNEL_PATH)/kernel
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel
 
@@ -163,7 +163,7 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 BOARD_USES_METADATA_PARTITION := true
 
 # OTA assert
-TARGET_OTA_ASSERT_DEVICE := sky, skyin
+TARGET_OTA_ASSERT_DEVICE := breeze,breezein
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -201,7 +201,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := true
 
 # Power
-TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB := //$(DEVICE_PATH):libperfmgr-ext-sky
+TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB := //$(DEVICE_PATH):libperfmgr-ext-breeze
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
@@ -224,7 +224,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_SCREEN_DENSITY := 440
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2024-10-01
+VENDOR_SECURITY_PATCH := 2024-11-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
@@ -269,7 +269,7 @@ DEVICE_MANIFEST_RAVELIN_FILES := \
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/configs/vintf/vendor_framework_compatibility_matrix.xml \
     $(DEVICE_PATH)/configs/vintf/xiaomi_framework_compatibility_matrix.xml \
-    vendor/bliss/config/device_framework_matrix.xml
+    vendor/lineage/config/device_framework_matrix.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
 ODM_MANIFEST_SKUS += hceese hcesim hcesim1 hcesim1ese hcesimese
 ODM_MANIFEST_HCEESE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_hceese.xml

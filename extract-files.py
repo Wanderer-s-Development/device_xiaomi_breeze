@@ -22,7 +22,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/xiaomi/sky',
+    'device/xiaomi/breeze',
     'hardware/qcom-caf/sm8450',
     'hardware/qcom-caf/sm8450/audio/agm/ipc/HwBinders/legacy',
     'hardware/qcom-caf/wlan',
@@ -72,6 +72,10 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'android.media.audio.common.types-V2-cpp.so',
             'android.media.audio.common.types-V3-cpp.so',
+        )
+        .replace_needed(
+            'android.hardware.common-V2-ndk_platform.so',
+            'android.hardware.common-V2-ndk.so',
         ),
     (
         'vendor/bin/hw/android.hardware.security.keymint-service-qti',
@@ -129,7 +133,7 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'sky',
+    'breeze',
     'xiaomi',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
