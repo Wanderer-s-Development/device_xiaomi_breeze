@@ -286,14 +286,12 @@ PRODUCT_COPY_FILES += \
 
 # RRO Overlays
 PRODUCT_PACKAGES += \
-    CarrierConfig \
-    FrameworksResCommon \
-    FrameworksResTarget \
-    SettingsResCommon \
-    SystemUIResCommon \
-    TelephonyResCommon \
-    WifiResCommon \
-    WifiResTarget
+    CarrierConfigOverlayBreeze \
+    FrameworkResOverlayBreeze \
+    SettingsOverlayBreeze \
+    SystemUIOverlayBreeze \
+    TelephonyOverlayBreeze \
+    WifiOverlayBreeze
 
 # Secure element
 PRODUCT_COPY_FILES += \
