@@ -77,7 +77,6 @@ vendor/etc/audio/sku_ravelin/audio_effects.conf
 vendor/etc/audio/sku_ravelin/mixer_paths_ravelin_qrd.xml
 vendor/etc/audio/sku_ravelin/resourcemanager_ravelin_qrd.xml
 vendor/etc/a2dp_audio_policy_configuration.xml
-vendor/etc/microphone_characteristics.xml
 vendor/etc/usecaseKvManager.xml
 
 # Batterysecret
@@ -1203,7 +1202,6 @@ vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
 vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
 vendor/etc/backend_conf.xml
-vendor/etc/card-defs.xml
 vendor/etc/media_codecs.xml
 vendor/etc/media_codecs_c2_audio.xml
 vendor/etc/media_codecs_performance_ravelin.xml
