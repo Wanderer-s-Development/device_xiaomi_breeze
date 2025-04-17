@@ -52,12 +52,12 @@ lib_fixups: lib_fixups_user_type = {
     ): lib_fixup_vendor_suffix,
     (
         'libagm',
-        'libagmclient',
-        'libagmmixer',
+        'libar-acdb',
         'libar-pal',
+        'libats',
+        'liblx-osal',
         'libpalclient',
         'libsndcardparser',
-        'vendor.qti.hardware.pal@1.0-impl',
     ): lib_fixup_remove,
 }
 
