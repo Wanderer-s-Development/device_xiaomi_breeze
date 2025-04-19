@@ -31,8 +31,8 @@ PRODUCT_MODEL := 24066PC95I
 PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="breeze-user 15 AQ3A.240912.001 OS2.0.5.0.VNUINXM release-keys" \
-    BuildFingerprint=POCO/breeze_p_in/breeze:15/AQ3A.240912.001/OS2.0.5.0.VNUINXM:user/release-keys \
+    BuildDesc="breeze-user 15 AQ3A.240912.001 OS2.0.7.0.VNUINXM release-keys" \
+    BuildFingerprint=POCO/breeze_p_in/breeze:15/AQ3A.240912.001/OS2.0.7.0.VNUINXM:user/release-keys \
     DeviceName=breeze \
     DeviceProduct=breeze_p_in
 
