@@ -12,6 +12,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
+# Setup dalvik vm configs.
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # Call the proprietary setup.
 $(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
@@ -122,15 +125,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
-
-# Dalvik heap
-PRODUCT_PROPERTY_OVERRIDES  += \
-           dalvik.vm.heapstartsize=8m \
-           dalvik.vm.heapsize=256m \
-           dalvik.vm.heapgrowthlimit=128m \
-           dalvik.vm.heaptargetutilization=0.75 \
-           dalvik.vm.heapminfree=512k \
-           dalvik.vm.heapmaxfree=8m
 
 # Device Settings
 PRODUCT_PACKAGES += \
