@@ -1,22 +1,22 @@
-# Device Tree for Xiaomi Redmi Note 12R/Redmi 12 5G/POCO M6 Pro 5G (Sky/River)
+# Device Tree for Xiaomi Redmi 13 5G/POCO M6 Plus 5G (Breeze)
 
-## Spec Sheet
+## Device Specifications
 
 | Feature | Specification |
 | :--- | :--- |
-| CPU | Octa-core<br>2X Cortex A78@ 2.2GHz<br>6X Cortex A55@ 2.0GHz |
-| Chipset | Qualcomm® Snapdragon™ 4 Gen 2 Mobile Platform<br>(*Samsung* Foundry's *FinFET*  *4nm*) |
-| GPU | Qualcomm® Adreno™ 619 |
-| Memory | 4GB \| 6GB \| 8GB \| (LPDDR4x) |
-| Shipped Android Version | 13.0 |
+| CPU | 2X Cortex A78@ 2.3GHz & 6X Cortex A55@ 2.0GHz |
+| Chipset | Snapdragon® 4 Gen 2 AE Mobile |
+| GPU | Qualcomm® Adreno™ 613 |
+| Memory | 6GB \| 8GB LPDDR4x |
+| Shipped Android Version | Android 14, HyperOS |
 | Storage | 128GB \| 256GB UFS 2.2 |
-| Battery | 5000mAh (typ) Li Polymer |
-| Dimensions | 168.60mm x 76.28mmx 8.17mm (Weight: 199g) |
-| Display | 1080P IPS LCD (6.79" FHD+ Display \| Refresh rate: 90Hz Touch sampling Rate: 240Hz Peak Brightness: 550 nits) |
-| Rear Camera | 50 MP, f/1.8, (wide), PDAF<br>2 MP, f/2.4, (depth) |
-| Front Camera | 8 MP, f/2.0, (wide), 1.12µm |
-| Release Date | 2023, August 01 (Global) |
+| Battery | 5030mAh (typ) Li Polymer |
+| Dimensions | 168.60 x 76.28 x 8.3 mm |
+| Display | 1080P IPS LCD (6.79" FHD+ Display \| Refresh rate: 120Hz) |
+| Rear Camera | 108 MP, f/1.75, (wide), PDAF<br>2MP Macro camera |
+| Front Camera | 13 MP |
+| Release Date | 2024, July 12 (Global) |
 
-## Device Picture (Redmi 12 5G)
+## Device Picture (Redmi 13 5G)
 
-![Redmi15_5G](https://i05.appmifile.com/964_item_it/07/10/2023/21c12381e99dc35091df4536b8fcf237!600x600!85.png)
+![Redmi13_5G](https://i02.appmifile.com/mi-com-product/fly-birds/redmi-13-5g/PC/7bb4b16fc6d18f4b7b3f8b57f0162ecd.png?f=webp)
