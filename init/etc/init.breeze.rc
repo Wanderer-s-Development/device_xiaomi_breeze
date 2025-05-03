@@ -7,8 +7,5 @@ on early-init
     write /sys/class/remoteproc/remoteproc2/recovery enabled
     write /sys/class/remoteproc/remoteproc3/recovery enabled
 
-on property:sys.boot_completed=1
-    write /sys/class/thermal/thermal_message/sconfig 500
-
 on property:persist.sys.xtra-daemon.enabled=*
     restart loc_launcher

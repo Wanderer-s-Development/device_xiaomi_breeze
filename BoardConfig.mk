@@ -206,13 +206,6 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
-# Sepolicy - XiaomiParts
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy/private/xiaomi/devicesettings
-
-#SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
-#    $(DEVICE_PATH)/sepolicy/public/xiaomi/devicesettings
-
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
