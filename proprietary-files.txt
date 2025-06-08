@@ -1133,6 +1133,12 @@ vendor/firmware/sipa.bin
 vendor/lib/hw/vulkan.adreno.so
 vendor/lib64/hw/vulkan.adreno.so
 
+# Hotword Enrollment
+product/priv-app/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND/HotwordEnrollmentXGoogleHEXAGON_WIDEBAND.apk
+product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND.apk
+system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
+system_ext/framework/com.android.hotwordenrollment.common.util.jar
+
 # Ims
 system_ext/etc/permissions/vendor.qti.imsdcservice.xml
 system_ext/framework/vendor.qti.ims.callcapability-V1.0-java.jar
