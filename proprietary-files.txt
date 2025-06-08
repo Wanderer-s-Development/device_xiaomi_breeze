@@ -1130,7 +1130,6 @@ vendor/firmware/gmu_gen70000.bin
 vendor/firmware/sipa.bin
 
 # Graphics (Vulkan)
-vendor/lib/hw/vulkan.adreno.so
 vendor/lib64/hw/vulkan.adreno.so
 
 # Hotword Enrollment
@@ -1355,7 +1354,6 @@ vendor/bin/init.qti.write.sh
 vendor/bin/qtigetprop
 vendor/bin/qtisetprop
 vendor/lib64/libsoc_helper.so
-vendor/lib64/libsoc_helper_jni.so
 
 # RIL
 product/app/uimgbaservice/uimgbaservice.apk
@@ -1772,9 +1770,6 @@ vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 
 # Trusted User Interface
 vendor/lib64/libminksocket_vendor.so
-
-# Trustzone
-vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 
 # VM mem
 vendor/lib64/libvmmem.so
