@@ -258,8 +258,15 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlayBreeze \
+    FrameworkResOverlayBreeze \
+    LineageSDKOverlayBreeze \
+    LineageSettingsOverlayBreeze \
+    SettingsOverlayBreeze \
+    SystemUIOverlayBreeze \
+    TelephonyOverlayBreeze \
+    WifiOverlayBreeze
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay
@@ -284,15 +291,6 @@ $(call soong_config_set,qtipower,mode_ext_lib,//$(LOCAL_PATH):libpowermode-ext-b
 # QMI
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti_vendor:64 # Needed by CNE app
-
-# RRO Overlays
-PRODUCT_PACKAGES += \
-    CarrierConfigOverlayBreeze \
-    FrameworkResOverlayBreeze \
-    SettingsOverlayBreeze \
-    SystemUIOverlayBreeze \
-    TelephonyOverlayBreeze \
-    WifiOverlayBreeze
 
 # Secure element
 PRODUCT_COPY_FILES += \
