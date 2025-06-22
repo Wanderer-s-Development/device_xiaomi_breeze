@@ -247,6 +247,10 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
+# Native libraries whitelist
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
 # Network
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
@@ -270,8 +274,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
-    libqti-perfd-client
+    android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -309,11 +312,9 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
-    hardware/lineage/interfaces/power-libperfmgr \
-    hardware/google \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/google/pixel/power-libperfmgr/libperfmgr \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/xiaomi
 
