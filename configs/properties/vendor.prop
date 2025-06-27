@@ -316,3 +316,6 @@ ro.apk_verity.mode=2
 
 # WiFi
 wifi.aware.interface=wifi-aware0
+
+# Keystore
+ro.hardware.keystore_desede=true
