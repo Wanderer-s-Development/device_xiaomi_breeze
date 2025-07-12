@@ -59,27 +59,27 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default:64 \
-    audio.primary.parrot:64 \
+    audio.primary.parrot \
     audio.r_submix.default:64 \
     audio.usb.default:64 \
-    sound_trigger.primary.parrot:64
+    sound_trigger.primary.parrot
 
 PRODUCT_PACKAGES += \
     audioadsprpcd
 
 PRODUCT_PACKAGES += \
-    lib_bt_aptx:64 \
-    lib_bt_ble:64 \
-    lib_bt_bundle:64 \
-    libagm_compress_plugin:64 \
-    libagm_mixer_plugin:64 \
-    libagm_pcm_plugin:64 \
-    libbatterylistener:64 \
-    libfmpal:64 \
-    libqcompostprocbundle:64 \
-    libqcomvisualizer:64 \
-    libqcomvoiceprocessing:64 \
-    libvolumelistener:64
+    lib_bt_aptx \
+    lib_bt_ble \
+    lib_bt_bundle \
+    libagm_compress_plugin \
+    libagm_mixer_plugin \
+    libagm_pcm_plugin \
+    libbatterylistener \
+    libfmpal \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
