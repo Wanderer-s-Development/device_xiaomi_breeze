@@ -68,17 +68,6 @@ vendor/lib64/libqtigefar.so;DISABLE_CHECKELF
 # Audio soundfx
 vendor/lib64/soundfx/libasphere.so
 
-# Audio configs
-odm/etc/audio_policy_engine_configuration_mi.xml:odm/etc/audio_policy_engine_configuration.xml
-odm/etc/audio_policy_engine_default_stream_volumes.xml
-odm/etc/audio_policy_engine_product_strategies.xml
-odm/etc/audio_policy_engine_stream_volumes.xml
-vendor/etc/audio/sku_ravelin/audio_effects.conf
-vendor/etc/audio/sku_ravelin/mixer_paths_ravelin_qrd.xml
-vendor/etc/audio/sku_ravelin/resourcemanager_ravelin_qrd.xml
-vendor/etc/a2dp_audio_policy_configuration.xml
-vendor/etc/usecaseKvManager.xml
-
 # Batterysecret
 vendor/bin/batterysecret
 vendor/etc/init/init.batterysecret.rc
@@ -1193,8 +1182,6 @@ vendor/etc/init/init.qti.media.rc
 vendor/etc/init/vendor.qti.media.c2@1.0-service.rc
 vendor/etc/init/vendor.qti.media.c2audio@1.0-service.rc
 vendor/etc/media_ravelin/video_system_specs.json
-vendor/etc/seccomp_policy/c2audio.vendor.base-arm.policy
-vendor/etc/seccomp_policy/c2audio.vendor.ext-arm.policy
 vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
