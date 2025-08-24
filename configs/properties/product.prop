@@ -2,7 +2,7 @@
 vendor.voice.path.for.pcm.voip=true
 audio.sys.mute.latency.factor=2
 audio.offload.min.duration.secs=30
-media.stagefright.audio.deep=false
+media.stagefright.audio.deep=true
 
 # Blur
 ro.sf.blurs_are_expensive=0
