@@ -93,12 +93,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/qcc-trd': blob_fixup()
         .replace_needed(
             'libgrpc++_unsecure.so', 'libgrpc++_unsecure_prebuilt.so'
-        )
-        .replace_needed(
-            'com.fingerprints.extension@1.0.so', 'com.fingerprints.extension@1.0_vendor.so'
         ),
-    'vendor/lib64/hw/fingerprint.goodix.default.so': blob_fixup()
-        .fix_soname(),
     'vendor/lib64/libcamximageformatutils.so': blob_fixup()
         .replace_needed(
             'vendor.qti.hardware.display.config-V2-ndk_platform.so', 'vendor.qti.hardware.display.config-V2-ndk.so'
@@ -123,7 +118,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('gettid: 1'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
-    'vendor/lib64/hw/fingerprint.silead.default.so': blob_fixup(),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
