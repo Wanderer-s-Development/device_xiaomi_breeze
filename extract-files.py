@@ -107,14 +107,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'libstdc++.so', 'libstdc++_vendor.so'
         ),
-    'vendor/lib64/libimp.so': blob_fixup()
-        .replace_needed(
-            'libjnigraphics.so', 'libjnigraphics_prebuilt.so'
-        ),
-    'vendor/lib64/libopencv_java4.so': blob_fixup()
-        .replace_needed(
-            'libjnigraphics.so', 'libjnigraphics_prebuilt.so'
-        ),
     'vendor/etc/media_codecs_ravelin.xml': blob_fixup()
         .regex_replace('.+media_codecs_(google_audio|google_c2|google_telephony|vendor_audio).+\n', ''),
     'vendor/etc/seccomp_policy/atfwd@2.0.policy': blob_fixup()
