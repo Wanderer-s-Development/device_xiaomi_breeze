@@ -103,10 +103,6 @@ blob_fixups: blob_fixups_user_type = {
             'libvendor.goodix.hardware.biometrics.fingerprint@2.1.so',
             'vendor.goodix.hardware.biometrics.fingerprint@2.1.so'
         ),
-    'vendor/lib64/libhme.so': blob_fixup()
-        .replace_needed(
-            'libstdc++.so', 'libstdc++_vendor.so'
-        ),
     'vendor/etc/media_codecs_ravelin.xml': blob_fixup()
         .regex_replace('.+media_codecs_(google_audio|google_c2|google_telephony|vendor_audio).+\n', ''),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
