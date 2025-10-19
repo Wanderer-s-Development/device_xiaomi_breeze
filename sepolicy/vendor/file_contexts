@@ -49,9 +49,6 @@
 # Modem
 /dev/smd8 u:object_r:vendor_radio_smd_device:s0
 
-# QRTR
-/(vendor|system/vendor)/bin/qrtr-lookup u:object_r:vendor_qrtr_exec:s0
-
 # RIL
 /data/vendor/diag(/.*)? u:object_r:minidump_data_file:s0
 
