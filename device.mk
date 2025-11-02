@@ -221,8 +221,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
     init.target.rc \
-    ueventd.qcom.rc \
-    ueventd-odm.rc
+    ueventd.qcom.rc
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -274,8 +273,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
     vendor_dsp_mountpoint \
-    vendor_firmware_mnt_mountpoint \
-    vendor_vm-system_mountpoint
+    vendor_firmware_mnt_mountpoint
     
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
