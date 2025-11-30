@@ -268,6 +268,3 @@ on early-boot && property:persist.vendor.pcie.boot_option=*
 on property:vendor.post_boot.parsed=1
     enable vendor.qvirtmgr
     start  vendor.qvirtmgr
-
-on property:sys.boot_completed=1    
-    setprop vendor.powerhal.init 1

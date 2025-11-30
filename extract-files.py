@@ -19,7 +19,6 @@ from extract_utils.main import (
 
 namespace_imports = [
     'device/xiaomi/breeze',
-    'hardware/qcom-caf/common/libqti-perfd-client',
     'hardware/qcom-caf/sm8450',
     'hardware/qcom-caf/wlan',
     'hardware/xiaomi',

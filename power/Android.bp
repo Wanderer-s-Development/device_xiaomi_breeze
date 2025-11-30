@@ -1,5 +1,5 @@
 cc_library_static {
-    name: "libperfmgr-ext-breeze",
+    name: "libpowermode-ext-breeze",
     defaults: [
         "android.hardware.power-ndk_shared",
     ],

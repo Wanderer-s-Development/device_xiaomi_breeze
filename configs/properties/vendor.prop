@@ -273,8 +273,8 @@ sys.vendor.shutdown.waittime=500
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-vendor.power.pasr.enabled=false
 vendor.pasr.activemode.enabled=false
+vendor.pasr.enabled=false
 
 # QFP
 persist.vendor.qfp=true
