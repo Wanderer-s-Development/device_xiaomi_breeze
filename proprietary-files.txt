@@ -1,4 +1,4 @@
-# Unpinned blobs from missi-user 15 AQ3A.240912.001 OS2.0.201.0.VNUINXM release-keys
+# Unpinned blobs from breeze-user 15 AQ3A.240912.001 OS2.0.201.0.VNUINXM release-keys
 
 # ACDB
 vendor/etc/acdbdata/nn_ns_models/fai__2.0.0_0.1__3.0.0_0.0__eai_1.36_enpu2.pmd
@@ -15,8 +15,6 @@ vendor/bin/adsprpcd
 vendor/etc/init/vendor.qti.adsprpc-guestos-service.rc
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
-vendor/lib64/libhme.so
-vendor/lib64/libmctfengine_stub.so
 
 # ADSP modules
 vendor/lib/rfsa/adsp/bm2n31.bin
@@ -52,7 +50,7 @@ vendor/lib/rfsa/adsp/misound_res_spk.bin
 # ANT+
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
-# Audio libraries
+# Audio
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
@@ -64,9 +62,10 @@ vendor/lib64/libcapiv2uvvendor.so
 vendor/lib64/libmcs.so
 vendor/lib64/libpal_net_if.so
 vendor/lib64/libqtigefar.so
-
-# Audio soundfx
 vendor/lib64/soundfx/libasphere.so
+
+# Audio firmware
+vendor/firmware/sipa.bin
 
 # Batterysecret
 vendor/bin/batterysecret
@@ -86,8 +85,104 @@ vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
+vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
+
+# Camera
+system_ext/lib64/vendor.qti.hardware.seccam@1.0.so
+vendor/bin/hw/vendor.qti.camera.provider@2.7-service_64
+vendor/etc/init/vendor.qti.camera.provider@2.7-service_64.rc
+vendor/lib64/com.qti.settings.clarence.so
+vendor/lib64/com.qti.settings.netrani.so
+vendor/lib64/com.qti.stats.common.so
+vendor/lib64/com.qualcomm.mcx.distortionmapper.so
+vendor/lib64/com.qualcomm.mcx.linearmapper.so
+vendor/lib64/com.qualcomm.mcx.policy.mfl.so
+vendor/lib64/com.qualcomm.mcx.policy.xr.so
+vendor/lib64/com.qualcomm.qti.mcx.usecase.extension.so
+vendor/lib64/com.xiaomi.plugin.memcpy.so
+vendor/lib64/com.xiaomi.plugin.mibokeh.so
+vendor/lib64/com.xiaomi.plugin.skinbeautifier.so
+vendor/lib64/com.xiaomi.plugin.superlowlight.so
+vendor/lib64/com.xiaomi.plugin.swflip.so
+vendor/lib64/libSNPE.so
+vendor/lib64/libTrueSight.so;DISABLE_CHECKELF
+vendor/lib64/libaidenoiser.so
+vendor/lib64/libaidenoiserv2.so
+vendor/lib64/libanc_night.so
+vendor/lib64/libanc_single_bokeh.so
+vendor/lib64/libanc_single_bokeh_rear.so
+vendor/lib64/libanc_single_rt_bokeh.so
+vendor/lib64/libbitmlengine.so
+vendor/lib64/libbitmlenginev2.so
+vendor/lib64/libc++_shared.so
+vendor/lib64/libcamera2ndk_vendor.so
+vendor/lib64/libcamera_nn_stub.so
+vendor/lib64/libcamerapostproc.so
+vendor/lib64/libcamxcommonutils.so
+vendor/lib64/libcamxexternalformatutils.so
+vendor/lib64/libcamxfacialfeatures.so
+vendor/lib64/libcamxfdalgo.so
+vendor/lib64/libcamxfdengine.so
+vendor/lib64/libcamxhwnodecontext.so
+vendor/lib64/libcamxifestriping.so
+vendor/lib64/libcamximageformatutils.so
+vendor/lib64/libcamxqsatalgo.so
+vendor/lib64/libcamxsettingsmanager.so
+vendor/lib64/libcamxstatscore.so
+vendor/lib64/libcamxswispiqmodule.so
+vendor/lib64/libcamxswprocessalgo.so
+vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libchilog.so
+vendor/lib64/libcom.qti.chinodeutils.so
+vendor/lib64/libcom.xiaomi.metadatautils.so
+vendor/lib64/libcom.xiaomi.pluginutils.so
+vendor/lib64/libdisplayconfig.qti.so
+vendor/lib64/libgralloc.qti.so
+vendor/lib64/libhdr10plus.so
+vendor/lib64/libhme.so
+vendor/lib64/libipebpsstriping.so
+vendor/lib64/libipebpsstriping170.so
+vendor/lib64/libipebpsstriping480.so
+vendor/lib64/libjni_aidenoiserutilv2.so
+vendor/lib64/libjpege.so
+vendor/lib64/libmctfengine_stub.so
+vendor/lib64/libmfGhostDetection.so
+vendor/lib64/libmfec.so
+vendor/lib64/libmialgo_ai_vision.so
+vendor/lib64/libmialgo_aio_seg.so
+vendor/lib64/libmialgo_sd.so
+vendor/lib64/libmialgo_utils.so
+vendor/lib64/libmialgoengine.so
+vendor/lib64/libmialgoengine2.so
+vendor/lib64/libmmcamera_bestats.so
+vendor/lib64/libmmcamera_cac.so
+vendor/lib64/libmmcamera_lscv35.so
+vendor/lib64/libmmcamera_lut2d.so
+vendor/lib64/libmmcamera_mfnr.so
+vendor/lib64/libmmcamera_mfnr_t4.so
+vendor/lib64/libmmcamera_pdpc.so
+vendor/lib64/libmorpho_HdrChecker.so
+vendor/lib64/libmorpho_ImageRefiner.so
+vendor/lib64/libmorpho_ImageRefinerLite.so
+vendor/lib64/libmpbase.so
+vendor/lib64/libopencv.so
+vendor/lib64/libopencv3a.so
+vendor/lib64/libopestriping.so
+vendor/lib64/libos.so
+vendor/lib64/libqll.so
+vendor/lib64/libqll10.so
+vendor/lib64/libqllengine.so
+vendor/lib64/libreverse_rpc_tests_skel.so
+vendor/lib64/libsfeShiftExtrapolation.so
+vendor/lib64/libspectre.so
+vendor/lib64/libswregistrationalgo.so
+vendor/lib64/libsynx.so
+vendor/lib64/libtfestriping.so
+vendor/lib64/libthreadutils.so
+vendor/lib64/libubifocus.so
+vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Camera configs
 odm/etc/camera/camerabooster.json
@@ -342,10 +437,7 @@ vendor/etc/camera/morpho_image_refiner_tuning_params_semco_s5khm6_wide_global_hd
 vendor/etc/camera/morpho_image_refiner_tuning_params_semco_s5khm6_wide_global_llhdr.xml
 vendor/etc/camera/sceneDetection.xml
 
-# Camera
-system_ext/lib64/vendor.qti.hardware.seccam@1.0.so
-vendor/bin/hw/vendor.qti.camera.provider@2.7-service_64
-vendor/etc/init/vendor.qti.camera.provider@2.7-service_64.rc
+# Camera components
 vendor/lib64/camera/components/com.bots.node.vendortagwrite.so
 vendor/lib64/camera/components/com.mi.node.tsskinbeautifier.so
 vendor/lib64/camera/components/com.qti.camx.chiiqutils.so
@@ -415,6 +507,62 @@ vendor/lib64/camera/components/com.qtistatic.stats.awb.so
 vendor/lib64/camera/components/com.qtistatic.stats.pdlib.so
 vendor/lib64/camera/components/libdepthmapwrapper.so
 vendor/lib64/camera/components/libdepthmapwrapper_secure.so
+
+# Camera features
+vendor/lib64/com.qti.feature2.anchorsync.so
+vendor/lib64/com.qti.feature2.demux.so
+vendor/lib64/com.qti.feature2.derivedoffline.so
+vendor/lib64/com.qti.feature2.frameselect.so
+vendor/lib64/com.qti.feature2.fusion.so
+vendor/lib64/com.qti.feature2.generic.so
+vendor/lib64/com.qti.feature2.gs.netrani.so
+vendor/lib64/com.qti.feature2.hdr.so
+vendor/lib64/com.qti.feature2.mcreprocrt.so
+vendor/lib64/com.qti.feature2.memcpy.so
+vendor/lib64/com.qti.feature2.mfsr.netrani.so
+vendor/lib64/com.qti.feature2.mfsr.sm8450.so
+vendor/lib64/com.qti.feature2.mfsr.so
+vendor/lib64/com.qti.feature2.ml.fillmore.so
+vendor/lib64/com.qti.feature2.ml.so
+vendor/lib64/com.qti.feature2.mux.so
+vendor/lib64/com.qti.feature2.qcfa.so
+vendor/lib64/com.qti.feature2.rawhdr.so
+vendor/lib64/com.qti.feature2.realtimeserializer.so
+vendor/lib64/com.qti.feature2.rt.so
+vendor/lib64/com.qti.feature2.rtmcx.so
+vendor/lib64/com.qti.feature2.serializer.so
+vendor/lib64/com.qti.feature2.statsregeneration.so
+vendor/lib64/com.qti.feature2.stub.so
+vendor/lib64/com.qti.feature2.swmf.so
+
+# Camera firmware
+vendor/firmware/CAMERA_ICP.b00
+vendor/firmware/CAMERA_ICP.b01
+vendor/firmware/CAMERA_ICP.b02
+vendor/firmware/CAMERA_ICP.b03
+vendor/firmware/CAMERA_ICP.b04
+vendor/firmware/CAMERA_ICP.b05
+vendor/firmware/CAMERA_ICP.b06
+vendor/firmware/CAMERA_ICP.b07
+vendor/firmware/CAMERA_ICP.b08
+vendor/firmware/CAMERA_ICP.b09
+vendor/firmware/CAMERA_ICP.b10
+vendor/firmware/CAMERA_ICP.b11
+vendor/firmware/CAMERA_ICP.b12
+vendor/firmware/CAMERA_ICP.b13
+vendor/firmware/CAMERA_ICP.b14
+vendor/firmware/CAMERA_ICP.b15
+vendor/firmware/CAMERA_ICP.b16
+vendor/firmware/CAMERA_ICP.b17
+vendor/firmware/CAMERA_ICP.b18
+vendor/firmware/CAMERA_ICP.b19
+vendor/firmware/CAMERA_ICP.b20
+vendor/firmware/CAMERA_ICP.elf
+vendor/firmware/CAMERA_ICP.mbn
+vendor/firmware/CAMERA_ICP.mdt
+vendor/firmware/CAMERA_ICP_170.elf
+
+#Camera sensors
 vendor/lib64/camera/com.qti.eeprom.gt24p128c2csli_imx766.so
 vendor/lib64/camera/com.qti.eeprom.irs2381c_polar.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
@@ -544,188 +692,6 @@ vendor/lib64/camx.provider@2.5-legacy.so
 vendor/lib64/camx.provider@2.6-legacy.so
 vendor/lib64/camx.provider@2.7-legacy.so
 vendor/lib64/com.qti.chiusecaseselector.so
-vendor/lib64/com.qti.feature2.anchorsync.so
-vendor/lib64/com.qti.feature2.demux.so
-vendor/lib64/com.qti.feature2.derivedoffline.so
-vendor/lib64/com.qti.feature2.frameselect.so
-vendor/lib64/com.qti.feature2.fusion.so
-vendor/lib64/com.qti.feature2.generic.so
-vendor/lib64/com.qti.feature2.gs.netrani.so
-vendor/lib64/com.qti.feature2.hdr.so
-vendor/lib64/com.qti.feature2.mcreprocrt.so
-vendor/lib64/com.qti.feature2.memcpy.so
-vendor/lib64/com.qti.feature2.mfsr.netrani.so
-vendor/lib64/com.qti.feature2.mfsr.sm8450.so
-vendor/lib64/com.qti.feature2.mfsr.so
-vendor/lib64/com.qti.feature2.ml.fillmore.so
-vendor/lib64/com.qti.feature2.ml.so
-vendor/lib64/com.qti.feature2.mux.so
-vendor/lib64/com.qti.feature2.qcfa.so
-vendor/lib64/com.qti.feature2.rawhdr.so
-vendor/lib64/com.qti.feature2.realtimeserializer.so
-vendor/lib64/com.qti.feature2.rt.so
-vendor/lib64/com.qti.feature2.rtmcx.so
-vendor/lib64/com.qti.feature2.serializer.so
-vendor/lib64/com.qti.feature2.statsregeneration.so
-vendor/lib64/com.qti.feature2.stub.so
-vendor/lib64/com.qti.feature2.swmf.so
-vendor/lib64/com.qti.settings.clarence.so
-vendor/lib64/com.qti.settings.netrani.so
-vendor/lib64/com.qti.stats.common.so
-vendor/lib64/com.qualcomm.mcx.distortionmapper.so
-vendor/lib64/com.qualcomm.mcx.linearmapper.so
-vendor/lib64/com.qualcomm.mcx.policy.mfl.so
-vendor/lib64/com.qualcomm.mcx.policy.xr.so
-vendor/lib64/com.qualcomm.qti.mcx.usecase.extension.so
-vendor/lib64/com.xiaomi.plugin.memcpy.so
-vendor/lib64/com.xiaomi.plugin.mibokeh.so
-vendor/lib64/com.xiaomi.plugin.skinbeautifier.so
-vendor/lib64/com.xiaomi.plugin.superlowlight.so
-vendor/lib64/com.xiaomi.plugin.swflip.so
-vendor/lib64/libaidenoiser.so
-vendor/lib64/libaidenoiserv2.so
-vendor/lib64/libanc_night.so
-vendor/lib64/libanc_single_bokeh.so
-vendor/lib64/libanc_single_bokeh_rear.so
-vendor/lib64/libSNPE.so
-vendor/lib64/libTrueSight.so;DISABLE_CHECKELF
-vendor/lib64/libanc_single_rt_bokeh.so
-vendor/lib64/libbitmlengine.so
-vendor/lib64/libbitmlenginev2.so
-vendor/lib64/libc++_shared.so
-vendor/lib64/libcamera2ndk_vendor.so
-vendor/lib64/libcamera_nn_stub.so
-vendor/lib64/libcamerapostproc.so
-vendor/lib64/libcamxcommonutils.so
-vendor/lib64/libcamxexternalformatutils.so
-vendor/lib64/libcamxfacialfeatures.so
-vendor/lib64/libcamxfdalgo.so
-vendor/lib64/libcamxfdengine.so
-vendor/lib64/libcamxhwnodecontext.so
-vendor/lib64/libcamxifestriping.so
-vendor/lib64/libcamximageformatutils.so
-vendor/lib64/libcamxqsatalgo.so
-vendor/lib64/libcamxsettingsmanager.so
-vendor/lib64/libcamxstatscore.so
-vendor/lib64/libcamxswispiqmodule.so
-vendor/lib64/libcamxswprocessalgo.so
-vendor/lib64/libcamxtintlessalgo.so
-vendor/lib64/libchilog.so
-vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcom.xiaomi.metadatautils.so
-vendor/lib64/libcom.xiaomi.pluginutils.so
-vendor/lib64/libdisplayconfig.qti.so
-vendor/lib64/libgralloc.qti.so
-vendor/lib64/libhdr10plus.so
-vendor/lib64/libipebpsstriping.so
-vendor/lib64/libipebpsstriping170.so
-vendor/lib64/libipebpsstriping480.so
-vendor/lib64/libjni_aidenoiserutilv2.so
-vendor/lib64/libjpege.so
-vendor/lib64/libmfGhostDetection.so
-vendor/lib64/libmfec.so
-vendor/lib64/libmialgo_aio_seg.so
-vendor/lib64/libmialgo_ai_vision.so
-vendor/lib64/libmialgo_sd.so
-vendor/lib64/libmialgo_utils.so
-vendor/lib64/libmialgoengine.so
-vendor/lib64/libmialgoengine2.so
-vendor/lib64/libmmcamera_bestats.so
-vendor/lib64/libmmcamera_cac.so
-vendor/lib64/libmmcamera_lscv35.so
-vendor/lib64/libmmcamera_lut2d.so
-vendor/lib64/libmmcamera_mfnr.so
-vendor/lib64/libmmcamera_mfnr_t4.so
-vendor/lib64/libmmcamera_pdpc.so
-vendor/lib64/libmorpho_HdrChecker.so
-vendor/lib64/libopencv.so
-vendor/lib64/libopencv3a.so
-vendor/lib64/libopestriping.so
-vendor/lib64/libos.so
-vendor/lib64/libqll.so
-vendor/lib64/libqll10.so
-vendor/lib64/libqllengine.so
-vendor/lib64/libreverse_rpc_tests_skel.so
-vendor/lib64/libsfeShiftExtrapolation.so
-vendor/lib64/libswregistrationalgo.so
-vendor/lib64/libsynx.so
-vendor/lib64/libtfestriping.so
-vendor/lib64/libthreadutils.so
-vendor/lib64/libubifocus.so
-vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-
-# Camera firmware
-vendor/firmware/CAMERA_ICP.b00
-vendor/firmware/CAMERA_ICP.b01
-vendor/firmware/CAMERA_ICP.b02
-vendor/firmware/CAMERA_ICP.b03
-vendor/firmware/CAMERA_ICP.b04
-vendor/firmware/CAMERA_ICP.b05
-vendor/firmware/CAMERA_ICP.b06
-vendor/firmware/CAMERA_ICP.b07
-vendor/firmware/CAMERA_ICP.b08
-vendor/firmware/CAMERA_ICP.b09
-vendor/firmware/CAMERA_ICP.b10
-vendor/firmware/CAMERA_ICP.b11
-vendor/firmware/CAMERA_ICP.b12
-vendor/firmware/CAMERA_ICP.b13
-vendor/firmware/CAMERA_ICP.b14
-vendor/firmware/CAMERA_ICP.b15
-vendor/firmware/CAMERA_ICP.b16
-vendor/firmware/CAMERA_ICP.b17
-vendor/firmware/CAMERA_ICP.b18
-vendor/firmware/CAMERA_ICP.b19
-vendor/firmware/CAMERA_ICP.b20
-vendor/firmware/CAMERA_ICP.elf
-vendor/firmware/CAMERA_ICP.mbn
-vendor/firmware/CAMERA_ICP.mdt
-vendor/firmware/CAMERA_ICP_170.elf
-
-# Computer vision firmware
-vendor/firmware/evass-lt-21.b00
-vendor/firmware/evass-lt-21.b01
-vendor/firmware/evass-lt-21.b02
-vendor/firmware/evass-lt-21.b03
-vendor/firmware/evass-lt-21.b04
-vendor/firmware/evass-lt-21.b05
-vendor/firmware/evass-lt-21.b06
-vendor/firmware/evass-lt-21.b07
-vendor/firmware/evass-lt-21.b08
-vendor/firmware/evass-lt-21.b09
-vendor/firmware/evass-lt-21.b10
-vendor/firmware/evass-lt-21.b11
-vendor/firmware/evass-lt-21.b12
-vendor/firmware/evass-lt-21.b13
-vendor/firmware/evass-lt-21.b14
-vendor/firmware/evass-lt-21.b15
-vendor/firmware/evass-lt-21.b16
-vendor/firmware/evass-lt-21.b17
-vendor/firmware/evass-lt-21.b18
-vendor/firmware/evass-lt-21.b19
-vendor/firmware/evass-lt-21.mbn
-vendor/firmware/evass-lt-21.mdt
-vendor/firmware/evass.b00
-vendor/firmware/evass.b01
-vendor/firmware/evass.b02
-vendor/firmware/evass.b03
-vendor/firmware/evass.b04
-vendor/firmware/evass.b05
-vendor/firmware/evass.b06
-vendor/firmware/evass.b07
-vendor/firmware/evass.b08
-vendor/firmware/evass.b09
-vendor/firmware/evass.b10
-vendor/firmware/evass.b11
-vendor/firmware/evass.b12
-vendor/firmware/evass.b13
-vendor/firmware/evass.b14
-vendor/firmware/evass.b15
-vendor/firmware/evass.b16
-vendor/firmware/evass.b17
-vendor/firmware/evass.b18
-vendor/firmware/evass.b19
-vendor/firmware/evass.mbn
-vendor/firmware/evass.mdt
 
 # CDSP
 vendor/bin/cdsprpcd
@@ -821,18 +787,76 @@ vendor/lib64/libscveObjectTracker.so
 vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/libvideoutils.so
 
+# Computer vision firmware
+vendor/firmware/evass-lt-21.b00
+vendor/firmware/evass-lt-21.b01
+vendor/firmware/evass-lt-21.b02
+vendor/firmware/evass-lt-21.b03
+vendor/firmware/evass-lt-21.b04
+vendor/firmware/evass-lt-21.b05
+vendor/firmware/evass-lt-21.b06
+vendor/firmware/evass-lt-21.b07
+vendor/firmware/evass-lt-21.b08
+vendor/firmware/evass-lt-21.b09
+vendor/firmware/evass-lt-21.b10
+vendor/firmware/evass-lt-21.b11
+vendor/firmware/evass-lt-21.b12
+vendor/firmware/evass-lt-21.b13
+vendor/firmware/evass-lt-21.b14
+vendor/firmware/evass-lt-21.b15
+vendor/firmware/evass-lt-21.b16
+vendor/firmware/evass-lt-21.b17
+vendor/firmware/evass-lt-21.b18
+vendor/firmware/evass-lt-21.b19
+vendor/firmware/evass-lt-21.mbn
+vendor/firmware/evass-lt-21.mdt
+vendor/firmware/evass.b00
+vendor/firmware/evass.b01
+vendor/firmware/evass.b02
+vendor/firmware/evass.b03
+vendor/firmware/evass.b04
+vendor/firmware/evass.b05
+vendor/firmware/evass.b06
+vendor/firmware/evass.b07
+vendor/firmware/evass.b08
+vendor/firmware/evass.b09
+vendor/firmware/evass.b10
+vendor/firmware/evass.b11
+vendor/firmware/evass.b12
+vendor/firmware/evass.b13
+vendor/firmware/evass.b14
+vendor/firmware/evass.b15
+vendor/firmware/evass.b16
+vendor/firmware/evass.b17
+vendor/firmware/evass.b18
+vendor/firmware/evass.b19
+vendor/firmware/evass.mbn
+vendor/firmware/evass.mdt
+
 # Charger
 vendor/etc/charger_fw_fstab.qti
 
 # Diag
 system/lib64/vendor.qti.diaghal-V1-ndk.so
-system_ext/lib64/libdiag_system.qti.so
-system_ext/lib64/libdiag_system.so
 system_ext/lib64/vendor.qti.diaghal@1.0.so
 vendor/bin/diag-router
 vendor/etc/init/vendor.qti.diag.rc
 vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
 vendor/lib64/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=_vendor
+
+# Display Configs
+product/etc/displayconfig/display_id_4630946631629285761.xml:vendor/etc/displayconfig/display_id_4630946631629285761.xml
+product/etc/displayconfig/display_id_4630947026014137729.xml:vendor/etc/displayconfig/display_id_4630947026014137729.xml
+vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0a_fhd_dsc_video_dsi_panel.json
+vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0c_fhd_dsc_video_dsi_panel.json
+vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0e_fhd_dsc_video_dsi_panel.json
+vendor/etc/display/qdcm_calib_data_xiaomi_n19_42_03_0b_fhd_dsc_video_dsi_panel.json
+vendor/etc/display/qdcm_calib_data_xiaomi_n19_42_03_0d_fhd_dsc_video_dsi_panel.json
+vendor/etc/xiaomi_n19_36_02_0a_fhd_dsc_video_dsi_panel_mi.xml
+vendor/etc/xiaomi_n19_36_02_0c_fhd_dsc_video_dsi_panel_mi.xml
+vendor/etc/xiaomi_n19_36_02_0e_fhd_dsc_video_dsi_panel_mi.xml
+vendor/etc/xiaomi_n19_42_03_0b_fhd_dsc_video_dsi_panel_mi.xml
+vendor/etc/xiaomi_n19_42_03_0d_fhd_dsc_video_dsi_panel_mi.xml
 
 # Display HDR - from ingot-user 14 UKQ1.240227.165 release-keys
 vendor/lib64/libgame_enhance.so|4432e47d990e98edb141becc345a92d03df26bf4
@@ -889,20 +913,6 @@ vendor/lib64/libsdm-disp-vndapis.so|169adaa522f75d622e76a1597c486eff4551c5a3
 vendor/lib64/libsdmextension.so|08d321d3e0da2231a29e3ec92604dca48c8895e3
 vendor/lib64/libtestutils.so|61b98f252afde4eb7c674de870e7afb590c9bb2a
 vendor/lib64/libtinyxml2_1.so|ae0c9190fd54c18a6c28dfccdfd29655abcb08de
-
-# Display Configs
-product/etc/displayconfig/display_id_4630946631629285761.xml:vendor/etc/displayconfig/display_id_4630946631629285761.xml
-product/etc/displayconfig/display_id_4630947026014137729.xml:vendor/etc/displayconfig/display_id_4630947026014137729.xml
-vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0a_fhd_dsc_video_dsi_panel.json
-vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0c_fhd_dsc_video_dsi_panel.json
-vendor/etc/display/qdcm_calib_data_xiaomi_n19_36_02_0e_fhd_dsc_video_dsi_panel.json
-vendor/etc/display/qdcm_calib_data_xiaomi_n19_42_03_0b_fhd_dsc_video_dsi_panel.json
-vendor/etc/display/qdcm_calib_data_xiaomi_n19_42_03_0d_fhd_dsc_video_dsi_panel.json
-vendor/etc/xiaomi_n19_36_02_0a_fhd_dsc_video_dsi_panel_mi.xml
-vendor/etc/xiaomi_n19_36_02_0c_fhd_dsc_video_dsi_panel_mi.xml
-vendor/etc/xiaomi_n19_36_02_0e_fhd_dsc_video_dsi_panel_mi.xml
-vendor/etc/xiaomi_n19_42_03_0b_fhd_dsc_video_dsi_panel_mi.xml
-vendor/etc/xiaomi_n19_42_03_0d_fhd_dsc_video_dsi_panel_mi.xml
 
 # DPM
 system_ext/bin/dpmd
@@ -1117,7 +1127,6 @@ vendor/firmware/gen6_3_26_0_zap.elf
 vendor/firmware/gen6_3_26_0_zap.mbn
 vendor/firmware/gen6_3_26_0_zap.mdt
 vendor/firmware/gmu_gen70000.bin
-vendor/firmware/sipa.bin
 
 # Graphics (Vulkan)
 vendor/lib64/hw/vulkan.adreno.so
@@ -1136,18 +1145,13 @@ system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.configaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.configservice-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.configservice-V1.1-java.jar
-system_ext/framework/vendor.qti.ims.connectionaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.datachannelservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.factory-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.factory-V1.1-java.jar
-system_ext/framework/vendor.qti.ims.factoryaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.rcsconfig-V1.1-java.jar
 system_ext/framework/vendor.qti.ims.rcsconfig-V2.0-java.jar
 system_ext/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar
-system_ext/framework/vendor.qti.ims.rcssipaidlservice-V1-java.jar
-system_ext/framework/vendor.qti.ims.rcsuceaidlservice-V1-java.jar
-system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
 
 # IRQ balance
 vendor/bin/msm_irqbalance
@@ -1168,6 +1172,7 @@ vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterutils.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqtikeymaster4.so
+vendor/lib64/libspcom.so
 
 # Keymint
 vendor/bin/hw/android.hardware.security.keymint-service-qti
@@ -1278,7 +1283,6 @@ vendor/lib64/vendor.qti.memory.pasrmanager@1.1.so
 vendor/bin/pm-proxy
 vendor/bin/pm-service
 vendor/lib64/libperipheral_client.so
-vendor/lib64/libspcom.so
 
 # Power-off alarm
 system_ext/app/PowerOffAlarm/PowerOffAlarm.apk
@@ -1316,6 +1320,7 @@ vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so;MODULE_SUFFIX=_vendor|bfddf0a2
 
 # QCOM system daemon
 vendor/bin/qcom-system-daemon
+vendor/etc/seccomp_policy/qti-systemd.policy
 vendor/lib64/libsubsystem_control.so
 
 # QCV
@@ -1332,7 +1337,6 @@ vendor/bin/qmipriod
 vendor/bin/qrtr-ns
 vendor/etc/init/qmipriod.debug.rc
 vendor/etc/init/qmipriod.rc
-vendor/etc/seccomp_policy/qti-systemd.policy
 vendor/etc/sec_config
 vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
@@ -1363,7 +1367,6 @@ vendor/lib64/vendor.qti.qspmhal@1.0.so
 vendor/bin/init.qti.write.sh
 vendor/bin/qtigetprop
 vendor/bin/qtisetprop
-vendor/lib64/libsoc_helper.so
 
 # RIL
 product/app/uimgbaservice/uimgbaservice.apk
@@ -1382,26 +1385,33 @@ system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 system_ext/etc/permissions/vendor.qti.ims.rcsservice.xml
 system_ext/framework/qcrilhook.jar
 system_ext/framework/vendor.qti.ims.connection-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.connectionaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.factory-V2.0-java.jar
 system_ext/framework/vendor.qti.ims.factory-V2.1-java.jar
 system_ext/framework/vendor.qti.ims.factory-V2.2-java.jar
+system_ext/framework/vendor.qti.ims.factoryaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.rcssip-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.rcssip-V1.1-java.jar
 system_ext/framework/vendor.qti.ims.rcssip-V1.2-java.jar
+system_ext/framework/vendor.qti.ims.rcssipaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.rcsuce-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.rcsuce-V1.1-java.jar
 system_ext/framework/vendor.qti.ims.rcsuce-V1.2-java.jar
+system_ext/framework/vendor.qti.ims.rcsuceaidlservice-V1-java.jar
 system_ext/lib64/lib-imsvideocodec.so
 system_ext/lib64/lib-imsvt.so
 system_ext/lib64/lib-imsvtextutils.so
 system_ext/lib64/lib-imsvtutils.so
+system_ext/lib64/libdiag_system.qti.so
+system_ext/lib64/libdiag_system.so
 system_ext/lib64/libimscamera_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
 system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
+system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
+system_ext/priv-app/QtiTelephony/QtiTelephony.apk
 system_ext/priv-app/ims/ims.apk
 system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-system_ext/priv-app/QtiTelephony/QtiTelephony.apk
 vendor/app/IWlanService/IWlanService.apk
 vendor/bin/hw/qcrilNrd
 vendor/bin/ATFWD-daemon
@@ -1617,6 +1627,21 @@ vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
 vendor/etc/init/vendor.sensors.qti.rc
 vendor/etc/init/vendor.sensors.sscrpcd.rc
 vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
+vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
+vendor/lib64/libsensorcal.so
+vendor/lib64/libsensorslog.so
+vendor/lib64/libsns_device_mode_stub.so
+vendor/lib64/libsns_direct_channel_stub.so
+vendor/lib64/libsns_registry_skel.so
+vendor/lib64/libsnsapi.so
+vendor/lib64/libsnsdiaglog.so
+vendor/lib64/libssc.so
+vendor/lib64/libssc_default_listener.so
+vendor/lib64/sensors.ssc.so
+vendor/lib64/sensors.touch.so
+vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
+
+# Sensors config
 vendor/etc/sensors/config/breeze_bma2x2_0.json
 vendor/etc/sensors/config/breeze_lis2doc_0.json
 vendor/etc/sensors/config/breeze_mir3da_0.json
@@ -1680,23 +1705,6 @@ vendor/etc/sensors/config/sns_tilt_to_wake.json
 vendor/etc/sensors/config/sns_wrist_pedo.json
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sns_reg_config
-vendor/lib64/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
-vendor/lib64/libmorpho_ImageRefiner.so
-vendor/lib64/libmorpho_ImageRefinerLite.so
-vendor/lib64/libmpbase.so
-vendor/lib64/libsensorcal.so
-vendor/lib64/libsensorslog.so
-vendor/lib64/libsns_device_mode_stub.so
-vendor/lib64/libsns_direct_channel_stub.so
-vendor/lib64/libsns_registry_skel.so
-vendor/lib64/libsnsapi.so
-vendor/lib64/libspectre.so
-vendor/lib64/libsnsdiaglog.so
-vendor/lib64/libssc.so
-vendor/lib64/libssc_default_listener.so
-vendor/lib64/sensors.ssc.so
-vendor/lib64/sensors.touch.so
-vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Soter
 vendor/app/SoterService/SoterService.apk
