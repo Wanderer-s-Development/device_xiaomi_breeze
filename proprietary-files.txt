@@ -1136,21 +1136,6 @@ product/priv-app/HotwordEnrollmentYGoogleHEXAGON_WIDEBAND/HotwordEnrollmentYGoog
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
 
-# Ims
-system_ext/framework/vendor.qti.ims.callcapability-V1.0-java.jar
-system_ext/framework/vendor.qti.ims.callcapabilityaidlservice-V1-java.jar
-system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar
-system_ext/framework/vendor.qti.ims.configaidlservice-V1-java.jar
-system_ext/framework/vendor.qti.ims.configservice-V1.0-java.jar
-system_ext/framework/vendor.qti.ims.configservice-V1.1-java.jar
-system_ext/framework/vendor.qti.ims.datachannelservice-V1-java.jar
-system_ext/framework/vendor.qti.ims.factory-V1.0-java.jar
-system_ext/framework/vendor.qti.ims.factory-V1.1-java.jar
-system_ext/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
-system_ext/framework/vendor.qti.ims.rcsconfig-V1.1-java.jar
-system_ext/framework/vendor.qti.ims.rcsconfig-V2.0-java.jar
-system_ext/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar
-
 # IRQ balance
 vendor/bin/msm_irqbalance
 vendor/etc/msm_irqbalance.conf
