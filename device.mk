@@ -261,6 +261,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayBreeze \
     FrameworkResOverlayBreeze \
+    Launcher3OverlayBreeze \
     LineageSDKOverlayBreeze \
     LineageSettingsOverlayBreeze \
     SettingsOverlayBreeze \
