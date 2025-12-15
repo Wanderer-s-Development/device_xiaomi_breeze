@@ -83,7 +83,6 @@ vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
 vendor/lib64/btaudio_offload_if.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
-vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
 vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
@@ -778,6 +777,7 @@ vendor/lib64/libcv_common.so
 vendor/lib64/libcvp2_1.so
 vendor/lib64/libdepthcomputation.so
 vendor/lib64/libeva.so
+vendor/lib64/libfastcrc.so
 vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastcvopt.so
 vendor/lib64/libscveCommon.so
@@ -960,7 +960,6 @@ vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libcpion.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libdrmutils.so
 vendor/lib64/libops.so
 vendor/lib64/libqisl.so
 vendor/lib64/librpmb.so
@@ -1138,7 +1137,6 @@ system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
 
 # Ims
-system_ext/etc/permissions/vendor.qti.imsdcservice.xml
 system_ext/framework/vendor.qti.ims.callcapability-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.callcapabilityaidlservice-V1-java.jar
 system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar
@@ -1195,15 +1193,12 @@ vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy
 vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
 vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
-vendor/etc/backend_conf.xml
-vendor/etc/media_codecs.xml
 vendor/etc/media_codecs_performance_ravelin.xml
 vendor/etc/media_codecs_ravelin.xml
-vendor/etc/media_profiles.xml
-vendor/etc/media_profiles_V1_0.xml
 vendor/etc/media_profiles_ravelin.xml
 vendor/lib64/libEvrcSwCodec.so
 vendor/lib64/libQcelp13SwCodec.so
+vendor/lib64/libdsd2pcm.so
 vendor/lib64/libqc2audio_base.so
 vendor/lib64/libqc2audio_basecodec.so
 vendor/lib64/libqc2audio_core.so
@@ -1331,7 +1326,6 @@ vendor/etc/init/init.qti.qcv.rc
 system/etc/sysconfig/qti_whitelist.xml
 system_ext/etc/sysconfig/qti_telephony_system_packages_config.xml
 system_ext/etc/sysconfig/qti_whitelist_system_ext.xml
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/irsc_util
 vendor/bin/qmipriod
 vendor/bin/qrtr-ns
@@ -1525,6 +1519,7 @@ vendor/lib64/libqcrilNrSocketModule.so
 vendor/lib64/libqcrilNrVoiceModule.so
 vendor/lib64/libqcrildataaidl.so
 vendor/lib64/libqcrildatactl.so
+vendor/lib64/libqcrildataqos.so
 vendor/lib64/libqdpr.so
 vendor/lib64/libqrtr.so
 vendor/lib64/libqrtrclient.so
