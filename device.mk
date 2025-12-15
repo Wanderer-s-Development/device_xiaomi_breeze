@@ -264,6 +264,7 @@ PRODUCT_PACKAGES += \
     Launcher3OverlayBreeze \
     LineageSDKOverlayBreeze \
     LineageSettingsOverlayBreeze \
+    LineageSettingsProviderOverlayBreeze \
     SettingsOverlayBreeze \
     SystemUIOverlayBreeze \
     TelephonyOverlayBreeze \
