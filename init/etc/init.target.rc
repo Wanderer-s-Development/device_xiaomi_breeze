@@ -34,9 +34,6 @@ on early-init
     write /proc/sys/kernel/printk_devkmsg ratelimited
     export MEMTAG_OPTIONS off
 
-    chown system system /sys/class/huaqin/interface/hw_info/pcba_config
-    chmod 0664 /sys/class/huaqin/interface/hw_info/pcba_config
-
 on init
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -86,8 +83,6 @@ on early-boot
     verity_update_state
 
 on boot
-    start pcbaconfig
-    chown root root /vendor/bin/PcbaConfigSet
     write /dev/cpuset/audio-app/cpus 1-2
     # Add a cpuset for the camera daemon
     # We want all cores for camera
@@ -188,12 +183,6 @@ service mi_thermald /system/vendor/bin/mi_thermald
     user root
     group system
     seclabel u:r:mi_thermald:s0
-
-service pcbaconfig /system/vendor/bin/PcbaConfigSet
-    class core
-    user root
-    group root system vendor_qti_diag
-    oneshot
 
 #Touch
 on property:sys.tp.grip_enable=0
