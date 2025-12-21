@@ -1,4 +1,4 @@
-# Unpinned blobs from breeze-user 16 BP2A.250605.031.A3 OS3.0.10.0.WNUINXM release-keys
+# Unpinned blobs from breeze-user 16 BP2A.250605.031.A3 OS3.0.302.0.WNUINXM release-keys
 
 # ACDB
 vendor/etc/acdbdata/nn_ns_models/fai__2.0.0_0.1__3.0.0_0.0__eai_1.36_enpu2.pmd
@@ -191,6 +191,7 @@ vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Camera configs
 odm/etc/camera/camerabooster.json
+odm/etc/camera/cameracustomize.json
 odm/etc/camera/cameraopt.json
 odm/etc/camera/cameraopt_perf.json
 odm/etc/camera/cameraopt_reclaim.json

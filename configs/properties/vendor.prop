@@ -12,6 +12,7 @@ ro.audio.monitorRotation=false
 ro.vendor.audio.camera.loopback.support=false
 ro.vendor.audio.scenario.support=true
 ro.vendor.audio.surround.support=true
+ro.vendor.audio.timecheck_timeoutMs=8000
 ro.vendor.audio.vocal.support=true
 ro.vendor.audio.voice.volume.boost=manual
 vendor.audio.adm.buffering.ms=2
