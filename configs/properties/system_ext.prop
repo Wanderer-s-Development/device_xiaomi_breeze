@@ -13,4 +13,4 @@ persist.bluetooth.leaudio_offload.disabled=false
 ro.bluetooth.leaudio_offload.supported=true
 
 # DPM
-persist.vendor.dpm.feature=1
+persist.vendor.dpm.feature=11

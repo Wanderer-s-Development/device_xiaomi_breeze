@@ -1,4 +1,4 @@
-# Unpinned blobs from breeze-user 15 AQ3A.240912.001 OS2.0.204.0.VNUINXM release-keys
+# Unpinned blobs from breeze-user 16 BP2A.250605.031.A3 OS3.0.10.0.WNUINXM release-keys
 
 # ACDB
 vendor/etc/acdbdata/nn_ns_models/fai__2.0.0_0.1__3.0.0_0.0__eai_1.36_enpu2.pmd
@@ -89,6 +89,7 @@ vendor/lib64/btaudio_offload_if.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
 vendor/lib64/libbtnv.so
+vendor/lib64/libmisight.so
 vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
@@ -190,6 +191,9 @@ vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Camera configs
 odm/etc/camera/camerabooster.json
+odm/etc/camera/cameraopt.json
+odm/etc/camera/cameraopt_perf.json
+odm/etc/camera/cameraopt_reclaim.json
 vendor/etc/camera/model/capture_cache
 vendor/etc/camera/model/capture_model
 vendor/etc/camera/model/capture_policy
@@ -1313,6 +1317,10 @@ vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmi_legacy.so
 vendor/lib64/libqmiservices.so
 
+# QSPA
+system_ext/etc/init/qspa_system.rc
+system_ext/etc/qspa/qspa_default.rc
+
 # QSPM
 vendor/bin/vendor.qti.qspmhal@1.0-service
 vendor/etc/init/vendor.qti.qspmhal@1.0-service.rc
@@ -1335,7 +1343,6 @@ product/framework/uimgbalibrary.jar
 product/framework/uimgbamanagerlibrary.jar
 product/framework/uimservicelibrary.jar
 system_ext/app/AtFwd2/AtFwd2.apk
-system_ext/app/ImsRcsService/ImsRcsService.apk
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/qti_permissions.xml
@@ -1365,6 +1372,7 @@ system_ext/lib64/libdiag_system.so
 system_ext/lib64/libimscamera_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
 system_ext/lib64/libimsmedia_jni.so;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
 system_ext/lib64/vendor.qti.ImsRtpService-V1-ndk.so
+system_ext/lib64/vendor.qti.ImsRtpService-V2-ndk.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so
 system_ext/priv-app/QtiTelephony/QtiTelephony.apk;REQUIRED=QtiTelephonyCompat
@@ -1595,6 +1603,7 @@ vendor/lib64/libsns_registry_skel.so
 vendor/lib64/libsnsapi.so
 vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libssc.so
+vendor/lib64/libssccalapi@2.0.so
 vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/sensors.touch.so

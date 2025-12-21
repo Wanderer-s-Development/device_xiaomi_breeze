@@ -58,6 +58,9 @@ on fs
     mount vfat /dev/block/bootdevice/by-name/logfs /dev/logfs noatime umask=006,uid=1000,gid=1000
 
 on post-fs
+    # add misight miev
+    chmod 0662 /dev/miev
+    restorecon /dev/miev
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 

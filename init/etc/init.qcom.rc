@@ -193,6 +193,9 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
+    #sensor DFS
+    mkdir /mnt/vendor/persist/sensors 0755 system system
+
     # Create directory used for display
     # for backward compatibility
     mkdir /persist/display 0770 system graphics

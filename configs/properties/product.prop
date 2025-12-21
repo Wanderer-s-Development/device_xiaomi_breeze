@@ -20,3 +20,4 @@ bluetooth.profile.pbap.server.enabled=true
 # RKPD
 remote_provisioning.enable_rkpd=true
 remote_provisioning.hostname=remoteprovisioning.googleapis.com
+remote_provisioning.strongbox.rkp_only=true
