@@ -4,9 +4,8 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-     package="org.lineageos.lineagesettings.provider.overlay.breeze">
-     <overlay
-          android:isStatic="true"
-          android:priority="100"
-          android:targetPackage="org.lineageos.lineagesettings" />
+          package="org.lineageos.lineagesettings.provider.overlay.breeze">
+    <overlay android:targetPackage="org.lineageos.lineagesettings"
+             android:isStatic="true"
+             android:priority="100" />
 </manifest>
