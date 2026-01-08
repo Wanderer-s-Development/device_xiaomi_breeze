@@ -64,6 +64,11 @@ vendor/lib64/libpal_net_if.so
 vendor/lib64/libqtigefar.so
 vendor/lib64/soundfx/libasphere.so
 
+# Audio configs
+vendor/etc/audio/sku_ravelin/mixer_paths_ravelin_qrd.xml
+vendor/etc/audio/sku_ravelin/resourcemanager_ravelin_qrd.xml
+vendor/etc/usecaseKvManager.xml
+
 # Audio firmware
 vendor/firmware/sipa.bin
 
