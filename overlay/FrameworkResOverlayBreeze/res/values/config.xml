@@ -213,13 +213,6 @@
         M 0,0 H -35 V 104 H 35 V 0 H 0 Z
     </string>
 
-    <!-- Location on the screen of the center of the physical power button. -->
-    <dimen name="physical_power_button_center_screen_location_y">1000px</dimen>
-
-    <!-- Location on the screen of the center of the fingerprint sensor. -->
-    <dimen name="physical_fingerprint_sensor_center_screen_location_x">1080px</dimen>
-    <dimen name="physical_fingerprint_sensor_center_screen_location_y">1000px</dimen>
-
      <!-- Whether the device enable the standalone (SA) mode of 5G NR.-->
     <bool name="config_telephony5gStandalone">true</bool>
 
