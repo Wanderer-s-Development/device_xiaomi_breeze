@@ -51,7 +51,11 @@ persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=false
 vendor.hw.fm.init=0
 
 # Camera
-camera.disable_zsl_mode=0
+camera.disable_zsl_mode=true
+ro.camera.enableCamera1MaxZsl=1
+persist.sys.miui.camera.boost.killAdj_threshold=500:251:200:50
+persist.sys.miui.camera.protect_prev_ext=true
+persist.sys.lmk.camera_minfree_levels=18432:0,23040:100,27648:200,64512:300,115712:800,216370:900
 
 # Dex2oat
 dalvik.vm.dex2oat64.enabled=true

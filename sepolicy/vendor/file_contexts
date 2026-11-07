@@ -52,4 +52,5 @@
 
 # Camera same-process HAL libraries
 /(vendor|system/vendor)/lib(64)?/libmialgo.*\.so      u:object_r:same_process_hal_file:s0
+/(vendor|system/vendor)/lib(64)?/libcom\.xiaomi\..*\.so u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/lib(64)?/libcamera_nn_stub\.so u:object_r:same_process_hal_file:s0
