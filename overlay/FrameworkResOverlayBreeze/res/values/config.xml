@@ -155,7 +155,7 @@
     <bool name="config_dozeAfterScreenOffByDefault">false</bool>
 
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
-    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_dozePulsePickup">false</bool>
 
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state. -->
@@ -277,7 +277,7 @@
          the framework from using higher refresh rates, even if display modes with higher refresh
          rates are available from hardware composer. Only has an effect if the value is
          non-zero. -->
-    <integer name="config_defaultPeakRefreshRate">240</integer>
+    <integer name="config_defaultPeakRefreshRate">120</integer>
 
     <!-- Whether the device enable the standalone (SA) mode of 5G NR.-->
     <bool name="config_telephony5gStandalone">true</bool>
