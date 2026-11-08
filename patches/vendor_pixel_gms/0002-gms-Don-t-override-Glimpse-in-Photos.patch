@@ -1,0 +1,24 @@
+From ca2fc99f9848dc4d4d288fe7e62266a246cccdc7 Mon Sep 17 00:00:00 2001
+From: Wanderer <331453264+nithishlabs08@users.noreply.github.com>
+Date: Sun, 8 Nov 2026 07:11:10 +0000
+Subject: [PATCH] gms: Don't override Glimpse in Photos
+
+---
+ common/Android.bp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/common/Android.bp b/common/Android.bp
+index c50296e..40019a8 100644
+--- a/common/Android.bp
++++ b/common/Android.bp
+@@ -300,7 +300,6 @@ android_app_import {
+     optional_uses_libs: ["androidx.window.extensions", "androidx.window.sidecar"],
+     overrides: [
+         "Gallery2",
+-        "Glimpse",
+     ],
+     preprocessed: true,
+     presigned: true,
+-- 
+2.43.0
+

@@ -31,7 +31,8 @@ PRODUCT_PACKAGES += \
     Canvas \
     ThemePicker \
     WallpaperPicker2 \
-    Jelly
+    Jelly \
+    Photos
 
 # Inherit common infinity configurations
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
