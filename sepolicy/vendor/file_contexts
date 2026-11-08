@@ -57,5 +57,5 @@
 /(vendor|system/vendor)/lib(64)?/libmorpho.*\.so      u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/lib(64)?/libTrueSight.*\.so   u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/lib(64)?/libmpbase.*\.so      u:object_r:same_process_hal_file:s0
-/(vendor|system/vendor)/lib(64)?/libanc_night.*\.so   u:object_r:same_process_hal_file:s0
+/(vendor|system/vendor)/lib(64)?/libanc.*\.so         u:object_r:same_process_hal_file:s0
 /(vendor|system/vendor)/lib(64)?/libcamera_nn_stub\.so u:object_r:same_process_hal_file:s0
