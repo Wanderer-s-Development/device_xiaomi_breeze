@@ -14,9 +14,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Halcyon target device
 HALCYON_BUILD := breeze
 
-# Halcyon GMS configuration (build with native GApps)
+# Halcyon GMS configuration (build with native Core GApps matching Infinity-X)
 WITH_GMS := true
-TARGET_INCLUDE_EXTRA_APPS := true
+TARGET_INCLUDE_EXTRA_APPS := false
 
 # Inherit common Halcyon configurations
 $(call inherit-product, vendor/halcyon/config/common.mk)
