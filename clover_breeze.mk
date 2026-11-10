@@ -14,7 +14,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Clover target device
 CLOVER_BUILD := breeze
 
-# Core GApps configuration matching Infinity-X profile + Gboard
+# Core GApps configuration matching Infinity-X profile
 TARGET_CORE_GAPPS := true
 
 # Inherit common Clover configurations
@@ -27,11 +27,12 @@ $(call inherit-product, device/xiaomi/breeze/device.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
-# Ensure clean app bundle matching Infinity-X profile + Gboard
+# Ensure clean app bundle matching Infinity-X profile
 PRODUCT_PACKAGES += \
     DeskClock \
     ExactCalculator \
-    LatinIMEGooglePrebuilt \
+    LatinIME \
+    libjni_latinimegoogle \
     ThemePicker \
     WallpaperPicker2 \
     Photos \
