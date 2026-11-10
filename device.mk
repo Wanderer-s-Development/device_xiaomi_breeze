@@ -298,7 +298,6 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlayBreezeRedmi \
     SystemUIOverlayBreeze \
     TelephonyOverlayBreeze \
-    UpdaterOverlayBreeze \
     WifiOverlayBreeze \
     WifiOverlayBreezePoco \
     WifiOverlayBreezeRedmi
