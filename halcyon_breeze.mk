@@ -27,10 +27,11 @@ $(call inherit-product, device/xiaomi/breeze/device.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
-# Ensure clean app bundle matching Infinity-X profile
+# Ensure clean app bundle matching Infinity-X profile + Gboard
 PRODUCT_PACKAGES += \
     DeskClock \
     ExactCalculator \
+    LatinIMEGooglePrebuilt \
     ThemePicker \
     WallpaperPicker2 \
     Photos \
