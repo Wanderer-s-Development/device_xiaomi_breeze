@@ -16,6 +16,7 @@ HALCYON_BUILD := breeze
 
 # Halcyon GMS configuration (build with native GApps)
 WITH_GMS := true
+TARGET_INCLUDE_EXTRA_APPS := true
 
 # Inherit common Halcyon configurations
 $(call inherit-product, vendor/halcyon/config/common.mk)
