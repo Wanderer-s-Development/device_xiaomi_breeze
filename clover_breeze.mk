@@ -32,7 +32,7 @@ PRODUCT_PACKAGES += \
     DeskClock \
     ExactCalculator \
     LatinIME \
-    libjni_latinimegoogle \
+    libjni_latinime \
     ThemePicker \
     WallpaperPicker2 \
     Photos \
