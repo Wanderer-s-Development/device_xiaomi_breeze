@@ -5,11 +5,14 @@
 #
 
 PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/clover_breeze.mk \
     $(LOCAL_DIR)/halcyon_breeze.mk \
     $(LOCAL_DIR)/infinity_breeze.mk \
     $(LOCAL_DIR)/lineage_breeze.mk
 
 COMMON_LUNCH_CHOICES := \
+    clover_breeze-cp2a-user \
+    clover_breeze-cp2a-userdebug \
     halcyon_breeze-cp2a-user \
     halcyon_breeze-cp2a-userdebug \
     halcyon_breeze-bp4a-user \
