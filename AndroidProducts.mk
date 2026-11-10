@@ -10,6 +10,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_breeze.mk
 
 COMMON_LUNCH_CHOICES := \
+    halcyon_breeze-cp2a-user \
+    halcyon_breeze-cp2a-userdebug \
     halcyon_breeze-bp4a-user \
     halcyon_breeze-bp4a-userdebug \
     infinity_breeze-user
