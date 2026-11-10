@@ -26,8 +26,13 @@ $(call inherit-product, device/xiaomi/breeze/device.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
-# Halcyon OTA Configuration
+# Ensure clean app bundle matching Infinity-X profile
 PRODUCT_PACKAGES += \
+    DeskClock \
+    ExactCalculator \
+    ThemePicker \
+    WallpaperPicker2 \
+    Photos \
     HalcyonUpdaterOverlayBreeze
 
 ## Device identifier
