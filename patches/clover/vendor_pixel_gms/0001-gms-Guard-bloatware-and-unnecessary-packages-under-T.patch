@@ -1,0 +1,91 @@
+diff --git a/common/common-vendor.mk b/common/common-vendor.mk
+index f9f343e..f1db315 100644
+--- a/common/common-vendor.mk
++++ b/common/common-vendor.mk
+@@ -124,6 +124,30 @@ PRODUCT_PACKAGES += \
+     com.google.android.extservices \
+     com.google.android.gmssystem.prodvic \
+     GoogleExtShared \
++    GoogleContacts \
++    LocationHistoryPrebuilt \
++    ModuleMetadataGoogle \
++    ConfigUpdater \
++    GoogleRestorePrebuilt-v1007163 \
++    PartnerSetupPrebuilt \
++    Phonesky \
++    PrebuiltGmsCoreVic_AdsDynamite \
++    PrebuiltGmsCoreVic_CronetDynamite \
++    PrebuiltGmsCoreVic_DynamiteLoader \
++    PrebuiltGmsCoreVic_DynamiteModulesA \
++    PrebuiltGmsCoreVic_DynamiteModulesC \
++    PrebuiltGmsCoreVic_GoogleCertificates \
++    PrebuiltGmsCoreVic_MapsDynamite \
++    PrebuiltGmsCoreVic_MeasurementDynamite \
++    AndroidPlatformServices \
++    SetupWizardPrebuilt_versioned \
++    EmergencyInfoGoogleNoUi \
++    GoogleServicesFramework \
++    SetupWizardPixelPrebuilt_versioned
++
++ifneq ($(TARGET_CORE_GAPPS),true)
++PRODUCT_PACKAGES += \
++    LatinIMEGooglePrebuilt \
+     GooglePrintRecommendationService \
+     DocumentsUIGoogle \
+     TagGoogle \
+@@ -131,13 +155,9 @@ PRODUCT_PACKAGES += \
+     CalendarGooglePrebuilt \
+     Chrome-Stub \
+     DevicePolicyPrebuilt-v10572820 \
+-    GoogleContacts \
+     GoogleTTS \
+-    LatinIMEGooglePrebuilt \
+-    LocationHistoryPrebuilt \
+     Maps \
+     MarkupGoogle_v2 \
+-    ModuleMetadataGoogle \
+     NgaResources \
+     Photos \
+     PrebuiltGmail \
+@@ -147,23 +167,10 @@ PRODUCT_PACKAGES += \
+     WebViewGoogle-Stub \
+     talkback \
+     AndroidAutoStubPrebuilt \
+-    ConfigUpdater \
+     DeviceIntelligenceNetworkPrebuiltAstrea \
+     DevicePersonalizationAiAiPrebuiltPixel2025 \
+     FilesPrebuilt \
+-    GoogleRestorePrebuilt-v1007163 \
+-    PartnerSetupPrebuilt \
+-    Phonesky \
+     PrebuiltDeskClockGoogle_76042511 \
+-    PrebuiltGmsCoreVic_AdsDynamite \
+-    PrebuiltGmsCoreVic_CronetDynamite \
+-    PrebuiltGmsCoreVic_DynamiteLoader \
+-    PrebuiltGmsCoreVic_DynamiteModulesA \
+-    PrebuiltGmsCoreVic_DynamiteModulesC \
+-    PrebuiltGmsCoreVic_GoogleCertificates \
+-    PrebuiltGmsCoreVic_MapsDynamite \
+-    PrebuiltGmsCoreVic_MeasurementDynamite \
+-    AndroidPlatformServices \
+     MlkitBarcodeUIPrebuilt \
+     TfliteDynamitePrebuilt \
+     VisionBarcodePrebuilt \
+@@ -171,16 +178,13 @@ PRODUCT_PACKAGES += \
+     ScribePrebuilt_v8.7.880674799 \
+     SearchSelectorPrebuilt \
+     SettingsIntelligenceGooglePrebuilt \
+-    SetupWizardPrebuilt_versioned \
+     TurboPrebuilt \
+     Velvet \
+     WellbeingPrebuilt \
+-    EmergencyInfoGoogleNoUi \
+     Flipendo \
+-    GoogleServicesFramework \
+-    SetupWizardPixelPrebuilt_versioned \
+     StorageManagerGoogle \
+     TurboAdapter
++endif
+ 
+ ifneq ($(WITH_GMS_COMMS_SUITE),false)
+ 

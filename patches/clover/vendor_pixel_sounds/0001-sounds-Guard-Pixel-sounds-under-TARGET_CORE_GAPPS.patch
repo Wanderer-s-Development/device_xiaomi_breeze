@@ -1,0 +1,15 @@
+--- a/products/sounds.mk
++++ b/products/sounds.mk
+@@ -5,6 +5,7 @@
+ #
+ 
+ ifeq ($(WITH_GMS),true)
++ifneq ($(TARGET_CORE_GAPPS),true)
+ 
+ # Inherit from the proprietary version
+ $(call inherit-product, vendor/pixel/sounds/common/common-vendor.mk)
+@@ -21,3 +22,4 @@
+     SettingsPixelSounds
+ 
+ endif
++endif
