@@ -60,6 +60,7 @@ apply_patch_folder() {
             ["vendor_pixel_gms"]="vendor/pixel/gms"
             ["vendor_pixel_sounds"]="vendor/pixel/sounds"
             ["vendor_pixel_themepicker"]="vendor/pixel/themepicker"
+            ["vendor_prebuilts"]="vendor/prebuilts"
         )
     elif [ "${target_flavor}" == "infinityx" ]; then
         PATCH_MAP=(

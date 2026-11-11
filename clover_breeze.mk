@@ -33,6 +33,7 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     LatinIME \
     libjni_latinime \
+    libjni_latinimegoogle \
     ThemePicker \
     WallpaperPicker2 \
     Photos \
