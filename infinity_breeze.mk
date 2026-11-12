@@ -21,6 +21,7 @@ LINEAGE_BUILDTYPE := RELEASE
 # GApps build flag (can be overridden by environment)
 WITH_GAPPS ?= true
 TARGET_CORE_GAPPS := true
+TARGET_IS_GROUPER := true
 
 # Inherit MindTheGapps configurations if present
 ifeq ($(WITH_GAPPS),true)

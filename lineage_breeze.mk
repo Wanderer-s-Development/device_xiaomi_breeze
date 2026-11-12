@@ -20,6 +20,19 @@ LINEAGE_BUILDTYPE := RELEASE
 
 # MindTheGapps build flag (default to true, overridable by environment)
 WITH_GAPPS ?= true
+TARGET_CORE_GAPPS := true
+TARGET_IS_GROUPER := true
+
+# Ensure clean AOSP replacement packages are bundled for Core GApps profile
+PRODUCT_PACKAGES += \
+    DeskClock \
+    ExactCalculator \
+    LatinIME \
+    libjni_latinimegoogle \
+    ThemePicker \
+    WallpaperPicker2 \
+    Jelly \
+    Photos
 
 # Inherit MindTheGapps configurations if present
 ifeq ($(WITH_GAPPS),true)
