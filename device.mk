@@ -329,9 +329,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
     frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
-# Sensors
+# Sensors & XiaomiParts (Touch Proximity Service)
 PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.xiaomi-multihal
+    android.hardware.sensors-service.xiaomi-multihal \
+    XiaomiParts
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/sku_ravelin/android.hardware.sensor.accelerometer.xml \
@@ -482,8 +483,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wallpapers/the_fool_lotm.jpg:$(TARGET_COPY_OUT_PRODUCT)/media/wallpapers/the_fool_lotm.jpg
 
 
-# HyperOS Stock Camera
-$(call inherit-product-if-exists, vendor/xiaomi/breeze-camera/breeze-camera.mk)
 
 # Performance & Responsiveness Optimizations (Make Everything Faster)
 PRODUCT_PRODUCT_PROPERTIES += \

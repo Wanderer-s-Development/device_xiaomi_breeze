@@ -22,6 +22,11 @@ LINEAGE_BUILDTYPE := RELEASE
 WITH_GAPPS ?= true
 TARGET_CORE_GAPPS := true
 
+# Inherit MindTheGapps configurations if present
+ifeq ($(WITH_GAPPS),true)
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+endif
+
 # Ensure AOSP replacement packages are bundled for Core GApps profile
 PRODUCT_PACKAGES += \
     DeskClock \

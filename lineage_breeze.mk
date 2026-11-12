@@ -18,13 +18,18 @@ BUILD_USERNAME := Wanderer
 INFINITY_BUILD_TYPE := RELEASE
 LINEAGE_BUILDTYPE := RELEASE
 
-# Always build Vanilla (no GApps)
-WITH_GAPPS := false
+# MindTheGapps build flag (default to true, overridable by environment)
+WITH_GAPPS ?= true
 
-# Inherit common lineage configurations
-$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
+# Inherit MindTheGapps configurations if present
+ifeq ($(WITH_GAPPS),true)
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+endif
 
-$(call inherit-product, vendor/infinity/config/BoardConfigReservedSize.mk)
+# Inherit common lineage / infinity configurations
+$(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/infinity/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/infinity/config/BoardConfigReservedSize.mk)
 
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/breeze/device.mk)

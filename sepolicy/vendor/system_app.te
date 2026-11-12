@@ -1,2 +1,6 @@
 # Battery Health
 r_dir_file(system_app, sysfs_battery_supply)
+
+# Proximity Switch
+allow system_app proc_proximity_ts:file rw_file_perms;
+

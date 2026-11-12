@@ -66,6 +66,15 @@
          that can be set by the user. -->
     <item name="config_screenBrightnessDozeFloat" format="float" type="dimen">0.06667</item>
 
+    <!-- Minimum screen brightness setting float. -->
+    <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.002</item>
+
+    <!-- Maximum screen brightness setting float. -->
+    <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
+
+    <!-- Default screen brightness setting float. -->
+    <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.397</item>
+
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor
          when adapting to brighter or darker environments.  This parameter controls how quickly
@@ -95,13 +104,18 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>2</item>
+        <item>5</item>
         <item>10</item>
-        <item>30</item>
-        <item>60</item>
+        <item>20</item>
+        <item>50</item>
         <item>100</item>
-        <item>150</item>
-        <item>210</item>
-        <item>255</item>
+        <item>200</item>
+        <item>400</item>
+        <item>800</item>
+        <item>1200</item>
+        <item>2000</item>
+        <item>3500</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the lux values
@@ -110,13 +124,18 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>5</item>
         <item>10</item>
-        <item>20</item>
-        <item>40</item>
-        <item>70</item>
-        <item>110</item>
-        <item>160</item>
-        <item>200</item>
+        <item>18</item>
+        <item>30</item>
+        <item>45</item>
+        <item>65</item>
+        <item>90</item>
+        <item>120</item>
+        <item>150</item>
+        <item>185</item>
+        <item>220</item>
+        <item>245</item>
         <item>255</item>
     </integer-array>
 
