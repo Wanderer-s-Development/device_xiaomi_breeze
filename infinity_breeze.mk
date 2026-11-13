@@ -41,6 +41,18 @@ PRODUCT_PACKAGES += \
     Photos \
     UpdaterOverlayBreeze
 
+# Include SetupWizard for GApps
+ifeq ($(WITH_GAPPS),true)
+PRODUCT_PACKAGES += \
+    SetupWizard
+endif
+
+# SetupWizard Theme: Material 3 Glif Expressive
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.theme=glif_expressive \
+    setupwizard.feature.day_night_mode_enabled=true \
+    ro.setupwizard.rotation_locked=true
+
 # Inherit common infinity configurations
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 

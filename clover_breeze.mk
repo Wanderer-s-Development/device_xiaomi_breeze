@@ -21,7 +21,15 @@ TARGET_IS_GROUPER := true
 # Inherit MindTheGapps configurations if present
 ifeq ($(WITH_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+PRODUCT_PACKAGES += \
+    SetupWizard
 endif
+
+# SetupWizard Theme: Material 3 Glif Expressive
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.theme=glif_expressive \
+    setupwizard.feature.day_night_mode_enabled=true \
+    ro.setupwizard.rotation_locked=true
 
 # Inherit common Clover configurations
 $(call inherit-product, vendor/clover/config/common_full_phone.mk)
