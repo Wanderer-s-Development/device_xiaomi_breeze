@@ -58,10 +58,10 @@ apply_patch_folder() {
     if [ "${target_flavor}" == "clover" ]; then
         PATCH_MAP=(
             ["hardware_clover_interfaces"]="hardware/clover/interfaces"
+            ["packages_apps_WallpaperPicker2"]="packages/apps/WallpaperPicker2"
             ["system_update_engine"]="system/update_engine"
             ["vendor_pixel_gms"]="vendor/pixel/gms"
             ["vendor_pixel_sounds"]="vendor/pixel/sounds"
-            ["vendor_pixel_themepicker"]="vendor/pixel/themepicker"
             ["vendor_prebuilts"]="vendor/prebuilts"
         )
     elif [ "${target_flavor}" == "infinityx" ]; then
