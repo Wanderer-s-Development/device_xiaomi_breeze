@@ -11,11 +11,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Builder / Maintainer
-INFINITY_MAINTAINER := Wanderer
 BUILD_USERNAME := Wanderer
 
 # Build type: RELEASE (no official or unofficial)
-INFINITY_BUILD_TYPE := RELEASE
 LINEAGE_BUILDTYPE := RELEASE
 
 # MindTheGapps build flag (default to true, overridable by environment)
@@ -45,10 +43,8 @@ ifeq ($(WITH_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 endif
 
-# Inherit common lineage / infinity configurations
+# Inherit common lineage configurations
 $(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
-$(call inherit-product-if-exists, vendor/infinity/config/common_full_phone.mk)
-$(call inherit-product-if-exists, vendor/infinity/config/BoardConfigReservedSize.mk)
 
 # Inherit device configurations
 $(call inherit-product, device/xiaomi/breeze/device.mk)
@@ -72,10 +68,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-# Device Specs & Quick Settings
+# Quick Settings Dialogs
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.infinity.maintainer=Wanderer \
-    ro.infinity.device=breeze \
-    persist.sys.infinity_revamped_qs=0 \
     persist.sys.qs_bt_show_dialog=1 \
     persist.sys.qs_data_show_dialog=1

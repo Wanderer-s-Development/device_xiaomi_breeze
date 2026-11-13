@@ -17,4 +17,6 @@ COMMON_LUNCH_CHOICES := \
     halcyon_breeze-cp2a-userdebug \
     halcyon_breeze-bp4a-user \
     halcyon_breeze-bp4a-userdebug \
-    infinity_breeze-user
+    infinity_breeze-user \
+    lineage_breeze-user \
+    lineage_breeze-userdebug
