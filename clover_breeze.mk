@@ -27,7 +27,7 @@ $(call inherit-product, device/xiaomi/breeze/device.mk)
 # Inherit from the proprietary version
 $(call inherit-product, vendor/xiaomi/breeze/breeze-vendor.mk)
 
-# Ensure clean app bundle matching Infinity-X profile
+# App bundle & Google components
 PRODUCT_PACKAGES += \
     DeskClock \
     ExactCalculator \
@@ -37,7 +37,9 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     WallpaperPicker2 \
     Photos \
-    CloverUpdaterOverlayBreeze
+    CloverUpdaterOverlayBreeze \
+    SettingsIntelligenceGooglePrebuilt \
+    Velvet
 
 ## Device identifier
 PRODUCT_DEVICE := breeze
