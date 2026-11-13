@@ -1,4 +1,4 @@
-From 7439897579237727bcdd95099ead31209b689594 Mon Sep 17 00:00:00 2001
+From 356002c5aa4237f6cad257d9a90855796c4f946e Mon Sep 17 00:00:00 2001
 From: Wanderer <331453264+nithishlabs08@users.noreply.github.com>
 Date: Sat, 7 Nov 2026 14:45:08 +0000
 Subject: [PATCH] ConsumerIr: Fix SPI byte reversal for room-wide range and
@@ -11,21 +11,21 @@ Subject: [PATCH] ConsumerIr: Fix SPI byte reversal for room-wide range and
 - Tune carrier duty cycle to 33.3% to match Vishay TSOP / Sharp IR demodulator
   AGC bandpass filters, preventing receiver gain suppression.
 - Append 16 trailing silence bytes (66.7us) to ensure MOSI settles low (LED off).
-- Handle /dev/ir_spi with clean per-job open/close semantics to allow the kernel
-  ir-spi driver to dynamically kmalloc, sync, kfree, and reset buffer_size=0,
-  eliminating kernel krealloc pointer corruption and -EINVAL errors.
+- Pre-size buffer with IR_SPI_SET_BUF_SIZE (0x40046911) matching SPI byte count
+  to reuse ir-spi's 150 KB pre-allocated boot DMA buffer, completely eliminating
+  runtime kmalloc and ENOMEM (-12) failures caused by CMA pool exhaustion.
 - Expand worker queue depth to 6 to preserve multi-frame remote repeat bursts.
 - Add 15ms inter-frame quiet gap between consecutive transmissions to allow
   receiver decoders to reset cleanly between frames.
 
 Change-Id: Ifc5df17975756593ef554abd316d681c1fda28bc
 ---
- ir/ConsumerIr.cpp | 198 ++++++++++++++++++++++++++++++++++++++++------
+ ir/ConsumerIr.cpp | 209 ++++++++++++++++++++++++++++++++++++++++------
  ir/ConsumerIr.h   |  25 ++++++
- 2 files changed, 198 insertions(+), 25 deletions(-)
+ 2 files changed, 209 insertions(+), 25 deletions(-)
 
 diff --git a/ir/ConsumerIr.cpp b/ir/ConsumerIr.cpp
-index 2825647..9b1f565 100644
+index 2825647..65aa441 100644
 --- a/ir/ConsumerIr.cpp
 +++ b/ir/ConsumerIr.cpp
 @@ -1,20 +1,24 @@
@@ -57,7 +57,7 @@ index 2825647..9b1f565 100644
  using namespace ::vendor::lineage::ir;
  
  namespace aidl {
-@@ -22,7 +26,76 @@ namespace android {
+@@ -22,7 +26,79 @@ namespace android {
  namespace hardware {
  namespace ir {
  
@@ -66,6 +66,9 @@ index 2825647..9b1f565 100644
 +
 +static const std::string kIrSpiDevice = "/dev/ir_spi";
 +static const std::string kLircDevice = "/dev/lirc0";
++
++// Custom ioctl for Xiaomi ir-spi driver: pre-sizes and activates pre-allocated boot DMA buffer (150 KB)
++#define IR_SPI_SET_BUF_SIZE 0x40046911
 +
 +static std::vector<uint8_t> modulatePatternToSpi(int32_t carrierFreqHz,
 +                                                const std::vector<int32_t>& pattern,
@@ -135,7 +138,7 @@ index 2825647..9b1f565 100644
  
  ConsumerIr::ConsumerIr() {
      auto carrier_freqs = IrProperties::carrier_freqs();
-@@ -41,6 +114,79 @@ ConsumerIr::ConsumerIr() {
+@@ -41,6 +117,87 @@ ConsumerIr::ConsumerIr() {
      } else {
          kRangeVec.push_back({.minHz = 30000, .maxHz = 60000});
      }
@@ -178,9 +181,17 @@ index 2825647..9b1f565 100644
 +                continue;
 +            }
 +
-+            // In ir-spi.ko, write() dynamically allocates kmalloc(count), performs spi_sync,
-+            // frees the buffer, and resets buffer_size to 0. Closing the FD decrements refcount
-+            // back to 0. This avoids driver krealloc pointer corruption and -EINVAL errors.
++            // In ir-spi.ko, a 150 KB (150,000 bytes) buffer is pre-allocated at boot time.
++            // Activating this buffer with IR_SPI_SET_BUF_SIZE ensures the driver reuses
++            // the pre-allocated DMA buffer without runtime kmalloc(), completely preventing
++            // ENOMEM (-12) failures caused by CMA pool exhaustion and memory fragmentation.
++            uint32_t buf_size = static_cast<uint32_t>(job.spiData.size());
++            if (buf_size <= 150000) {
++                if (ioctl(fd.get(), IR_SPI_SET_BUF_SIZE, &buf_size) < 0) {
++                    LOG(WARNING) << "workerLoop: IR_SPI_SET_BUF_SIZE ioctl failed: " << strerror(errno);
++                }
++            }
++
 +            ssize_t written = write(fd.get(), job.spiData.data(), job.spiData.size());
 +            if (written < 0 || static_cast<size_t>(written) != job.spiData.size()) {
 +                LOG(ERROR) << "workerLoop: write SPI failed (" << job.spiData.size()
@@ -215,7 +226,7 @@ index 2825647..9b1f565 100644
  }
  
  ::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(std::vector<ConsumerIrFreqRange>* _aidl_return) {
-@@ -62,33 +208,35 @@ ConsumerIr::ConsumerIr() {
+@@ -62,33 +219,35 @@ ConsumerIr::ConsumerIr() {
          return ::ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
      }
  

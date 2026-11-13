@@ -114,9 +114,13 @@ In Xiaomi's driver, ioctl `0x40046911` is **`IR_SPI_SET_BUF_SIZE`** (pre-allocat
   - Bit period: $1 / 1,920,000\text{ s} \approx 0.520833\ \mu\text{s}$.
   - Carrier period for 38 kHz: $26.3158\ \mu\text{s} \approx 50.5\text{ bits}$ per cycle.
   - Generates industry-standard 33.3% duty cycle (1/3 ON, 2/3 OFF) square wave during PULSE phases and 0-bit silence during SPACE phases.
-- Pre-sizes the transfer buffer with `IR_SPI_SET_BUF_SIZE` (`0x40046911`) matching the modulated SPI byte count prior to write.
+- Pre-sizes and activates the transfer buffer with `IR_SPI_SET_BUF_SIZE` (`0x40046911`) matching the modulated SPI byte count prior to write. This instructs `ir-spi.ko` to reuse its pre-allocated 150,000-byte (150 KB) boot DMA buffer, eliminating runtime `kmalloc()` and preventing `-ENOMEM` (-12) errors during CMA pool exhaustion.
 
-### 5.2 SELinux Policy (`device/lineage/sepolicy/common/vendor/hal_ir_default.te`)
+### 5.2 CMA Pool & Memory Fragmentation Immunity
+- When memory fragments or camera/display pipelines exhaust the Contiguous Memory Allocator (`CmaFree: 0 KB`), dynamic runtime allocations like `kmalloc(47840)` fail with `-ENOMEM`.
+- Activating the boot buffer with `ioctl(fd, 0x40046911, &buf_size)` where `buf_size <= 150000` reuses the buffer already reserved at early boot, requiring **0 bytes of runtime CMA allocation**.
+
+### 5.3 SELinux Policy (`device/lineage/sepolicy/common/vendor/hal_ir_default.te`)
 ```te
 allow hal_ir_default { device lirc_device }:lnk_file r_file_perms;
 ```

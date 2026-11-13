@@ -25,9 +25,11 @@ if [ -z "${ROM_TARGET}" ]; then
         ROM_TARGET="clover"
     elif [ -n "${INFINITY_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/infinity" ]; then
         ROM_TARGET="infinityx"
+    elif [ -n "${LINEAGE_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/lineage" ]; then
+        ROM_TARGET="lineage"
     else
         echo "[!] No ROM specified and could not auto-detect."
-        echo "    Usage: $0 [clover|infinityx|all]"
+        echo "    Usage: $0 [clover|infinityx|lineage|all]"
         exit 1
     fi
 fi
@@ -74,6 +76,10 @@ apply_patch_folder() {
             ["vendor_pixel_gms"]="vendor/pixel/gms"
             ["vendor_pixel_sounds"]="vendor/pixel/sounds"
             ["vendor_pixel_themepicker"]="vendor/pixel/themepicker"
+        )
+    elif [ "${target_flavor}" == "lineage" ]; then
+        PATCH_MAP=(
+            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
         )
     fi
 
@@ -140,13 +146,17 @@ case "${ROM_TARGET}" in
     infinityx)
         apply_patch_folder "infinityx"
         ;;
+    lineage)
+        apply_patch_folder "lineage"
+        ;;
     all)
         apply_patch_folder "clover"
         apply_patch_folder "infinityx"
+        apply_patch_folder "lineage"
         ;;
     *)
         echo "[!] Unknown target: ${ROM_TARGET}"
-        echo "    Valid options: clover, infinityx, all"
+        echo "    Valid options: clover, infinityx, lineage, all"
         exit 1
         ;;
 esac
