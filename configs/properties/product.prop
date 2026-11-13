@@ -30,8 +30,4 @@ ro.infinity.battery=5030 mAh
 ro.infinity.display=6.79-inch FHD+ 120Hz LCD
 ro.infinity.camera=108 MP Dual Camera
 
-# SetupWizard: Material 3 Glif Expressive
-setupwizard.theme=glif_expressive
-setupwizard.feature.day_night_mode_enabled=true
-ro.setupwizard.rotation_locked=true
 

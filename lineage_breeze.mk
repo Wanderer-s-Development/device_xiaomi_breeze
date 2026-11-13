@@ -45,12 +45,6 @@ ifeq ($(WITH_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 endif
 
-# SetupWizard Theme: Material 3 Glif Expressive
-PRODUCT_PRODUCT_PROPERTIES += \
-    setupwizard.theme=glif_expressive \
-    setupwizard.feature.day_night_mode_enabled=true \
-    ro.setupwizard.rotation_locked=true
-
 # Inherit common lineage / infinity configurations
 $(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
 $(call inherit-product-if-exists, vendor/infinity/config/common_full_phone.mk)
