@@ -21,12 +21,6 @@ LINEAGE_BUILDTYPE := RELEASE
 # GApps build flag (can be overridden by environment)
 WITH_GAPPS ?= true
 TARGET_CORE_GAPPS := true
-TARGET_IS_GROUPER := true
-
-# Inherit MindTheGapps configurations if present
-ifeq ($(WITH_GAPPS),true)
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-endif
 
 # Ensure AOSP replacement packages are bundled for Core GApps profile
 PRODUCT_PACKAGES += \
@@ -40,12 +34,6 @@ PRODUCT_PACKAGES += \
     Jelly \
     Photos \
     UpdaterOverlayBreeze
-
-# Include SetupWizard for GApps
-ifeq ($(WITH_GAPPS),true)
-PRODUCT_PACKAGES += \
-    SetupWizard
-endif
 
 # Inherit common infinity configurations
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)

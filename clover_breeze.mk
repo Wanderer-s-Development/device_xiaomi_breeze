@@ -16,14 +16,6 @@ CLOVER_BUILD := breeze
 
 # Core GApps configuration matching Infinity-X profile
 TARGET_CORE_GAPPS := true
-TARGET_IS_GROUPER := true
-
-# Inherit MindTheGapps configurations if present
-ifeq ($(WITH_GAPPS),true)
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-PRODUCT_PACKAGES += \
-    SetupWizard
-endif
 
 # Inherit common Clover configurations
 $(call inherit-product, vendor/clover/config/common_full_phone.mk)
