@@ -353,7 +353,8 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi \
-    hardware/qcom-caf/wlan
+    hardware/qcom-caf/wlan \
+    hardware/qcom-caf/wlan/qcwcn
 
 # System properties
 PRODUCT_COPY_FILES += \
