@@ -13,8 +13,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_breeze.mk
 
 COMMON_LUNCH_CHOICES := \
-    wanderer_breeze-userdebug \
-    wanderer_breeze-user \
+    wanderer_breeze-trunk_staging-userdebug \
+    wanderer_breeze-trunk_staging-user \
     clover_breeze-cp2a-user \
     clover_breeze-cp2a-userdebug \
     halcyon_breeze-cp2a-user \
