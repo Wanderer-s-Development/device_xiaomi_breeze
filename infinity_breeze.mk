@@ -33,7 +33,8 @@ PRODUCT_PACKAGES += \
     WallpaperPicker2 \
     Jelly \
     Photos \
-    UpdaterOverlayBreeze
+    UpdaterOverlayBreeze \
+    AppLocker
 
 # Inherit common infinity configurations
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
