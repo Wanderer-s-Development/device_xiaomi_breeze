@@ -71,7 +71,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.qs_bt_show_dialog=0 \
     persist.sys.qs_data_show_dialog=0
 
-# Strip unwanted accessibility, enterprise, auto, and sounds bloat
+# Strip unwanted accessibility, enterprise, auto, sounds, speech, and browser bloat
 PRODUCT_PACKAGES := $(filter-out \
     AndroidAutoStubPrebuilt \
     talkback \
@@ -81,4 +81,10 @@ PRODUCT_PACKAGES := $(filter-out \
     TagGoogle \
     SoundPickerPrebuilt_33000242 \
     FrameworkPixelSounds \
-    SettingsPixelSounds,$(PRODUCT_PACKAGES))
+    SettingsPixelSounds \
+    Chrome \
+    Chrome-Stub \
+    GoogleTTS,$(PRODUCT_PACKAGES))
+
+PRODUCT_COPY_FILES := $(filter-out \
+    vendor/pixel/gms/common/proprietary/product/app/Chrome/Chrome.apk.gz:$(TARGET_COPY_OUT_PRODUCT)/app/Chrome/Chrome.apk.gz,$(PRODUCT_COPY_FILES))
