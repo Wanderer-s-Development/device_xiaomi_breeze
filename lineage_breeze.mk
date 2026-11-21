@@ -16,32 +16,26 @@ BUILD_USERNAME := Wanderer
 # Build type: RELEASE (no official or unofficial)
 LINEAGE_BUILDTYPE := RELEASE
 
-# MindTheGapps build flag (default to true, overridable by environment)
-WITH_GAPPS ?= true
+# MindTheGapps build flag (default to false for vanilla LineageOS)
+WITH_GAPPS ?= false
+ifeq ($(WITH_GAPPS),true)
 TARGET_CORE_GAPPS := true
 TARGET_IS_GROUPER := true
+PRODUCT_PACKAGES += \
+    SetupWizard \
+    Photos \
+    libjni_latinimegoogle
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+endif
 
-# Ensure clean AOSP replacement packages are bundled for Core GApps profile
+# Bundled packages for LineageOS
 PRODUCT_PACKAGES += \
     DeskClock \
     ExactCalculator \
     LatinIME \
-    libjni_latinimegoogle \
     ThemePicker \
     WallpaperPicker2 \
-    Jelly \
-    Photos
-
-# Include SetupWizard for GApps
-ifeq ($(WITH_GAPPS),true)
-PRODUCT_PACKAGES += \
-    SetupWizard
-endif
-
-# Inherit MindTheGapps configurations if present
-ifeq ($(WITH_GAPPS),true)
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-endif
+    Jelly
 
 # Inherit common lineage configurations
 $(call inherit-product-if-exists, vendor/lineage/config/common_full_phone.mk)
