@@ -1,0 +1,202 @@
+diff --git a/core/java/android/security/trickystore/AttestationUtils.java b/core/java/android/security/trickystore/AttestationUtils.java
+index b71964761..2126d57d1 100644
+--- a/core/java/android/security/trickystore/AttestationUtils.java
++++ b/core/java/android/security/trickystore/AttestationUtils.java
+@@ -406,15 +406,15 @@ public final class AttestationUtils {
+     }
+ 
+     public static int getAttestVersion() {
++        final int firstApiLevel = SystemProperties.getInt("ro.product.first_api_level", -1);
++        if (firstApiLevel > 0) {
++            return apiLevelToAttestVersion(firstApiLevel);
++        }
+         final int sdkVersion = getSdkAttestVersion();
+         final int halVersion = getKeyMintAidlVersion();
+         if (halVersion > 0 && sdkVersion >= 100) {
+             return Math.min(sdkVersion, halVersion * 100);
+         }
+-        final int firstApiLevel = SystemProperties.getInt("ro.product.first_api_level", -1);
+-        if (firstApiLevel > 0) {
+-            return apiLevelToAttestVersion(firstApiLevel);
+-        }
+         return sdkVersion;
+     }
+ 
+@@ -647,6 +647,11 @@ public final class AttestationUtils {
+             Integer parsed = parsePatchLevel(level.vendor, isLong);
+             if (parsed != null) return parsed;
+         }
++        String vendor = SystemProperties.get("ro.vendor.build.security_patch", "");
++        if (!vendor.isEmpty()) {
++            Integer parsed = parsePatchLevel(vendor, isLong);
++            if (parsed != null) return parsed;
++        }
+         return convertPatchLevel(Build.VERSION.SECURITY_PATCH, isLong);
+     }
+ 
+diff --git a/core/java/android/security/trickystore/TrickyStoreService.java b/core/java/android/security/trickystore/TrickyStoreService.java
+index 91d71e366..7d2fd7d78 100644
+--- a/core/java/android/security/trickystore/TrickyStoreService.java
++++ b/core/java/android/security/trickystore/TrickyStoreService.java
+@@ -136,6 +136,8 @@ public class TrickyStoreService {
+             "com.google.android.apps.nbu.paisa.user",
+             // Cert generation
+             "com.revolut.revolut!",
++            "com.phonepe.app!",
++            "in.org.npci.upiapp!",
+             // Key attestation checkers, leaf hack
+             "io.github.qwq233.keyattestation?",
+             "io.github.vvb2060.keyattestation?",
+@@ -712,7 +714,11 @@ public class TrickyStoreService {
+                     alias, KeyProperties.PURPOSE_SIGN)
+                     .setAlgorithmParameterSpec(new ECGenParameterSpec("secp256r1"))
+                     .setDigests(KeyProperties.DIGEST_SHA256)
+-                    .setAttestationChallenge(new byte[16]);
++                    .setAttestationChallenge(new byte[16])
++                    // A targeted request attests device ids. A challenge-only key
++                    // can succeed on this KeyMint and cache a healthy TEE, after
++                    // which the real request dies with CANNOT_ATTEST_IDS.
++                    .setDevicePropertiesAttestationIncluded(true);
+             kpg.initialize(builder.build());
+             kpg.generateKeyPair();
+             Log.i(TAG, "Attested key generation probe successful");
+@@ -763,6 +769,21 @@ public class TrickyStoreService {
+         return false;
+     }
+ 
++    /**
++     * True for any non-skip target. Unlike {@link #needHack} and
++     * {@link #needGenerate}, this does not consult the TEE probe.
++     */
++    public boolean isAttestationTarget(int callingUid, String[] packages) {
++        if (packages == null) return false;
++        maybeRefreshTargets();
++        for (String pkg : packages) {
++            if (XPOSED_PACKAGES.contains(pkg)) continue;
++            Mode mode = mPackageModes.get(pkg);
++            if (mode != null && mode != Mode.SKIP) return true;
++        }
++        return false;
++    }
++
+     private void maybeRefreshTargets() {
+         long now = System.currentTimeMillis();
+         if (now - mLastTargetsRefreshMs >= TARGETS_REFRESH_COOLDOWN_MS) {
+@@ -858,4 +879,18 @@ public class TrickyStoreService {
+         ensureTeeStatus();
+         return Boolean.TRUE.equals(mTeeBroken);
+     }
++
++    /**
++     * KeyMint could not produce an attestation certificate. That is either
++     * ATTESTATION_KEYS_NOT_PROVISIONED or CANNOT_ATTEST_IDS for the spoofed
++     * device ids. A healthy probe result is cached for the life of this
++     * process, which would leave AUTO targets on leaf hack with nothing to
++     * rewrite. Remember that so the following calls generate a chain instead.
++     */
++    public void noteAttestationKeysMissing() {
++        mTeeBroken = Boolean.TRUE;
++        mTeeCheckedAtMs = System.currentTimeMillis();
++        AttestationUtils.setTeeBroken(true);
++        Log.w(TAG, "KeyMint cannot attest; using certificate generation");
++    }
+ }
+diff --git a/keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java b/keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java
+index 8efc704d0..c89e24e1f 100644
+--- a/keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java
++++ b/keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java
+@@ -834,6 +834,8 @@ public abstract class AndroidKeyStoreKeyPairGeneratorSpi extends KeyPairGenerato
+             // attest-key-rooted chains and internal hardware probes must follow
+             // the stock Keystore path.
+             final boolean eligible = mSpec.getAttestationChallenge() != null
++                    && mSpec.getAttestationChallenge().length
++                        <= MAX_ATTESTATION_CHALLENGE_SIZE_BYTES
+                     && !mSpec.isStrongBoxBacked()
+                     && (mKeymasterAlgorithm == KeymasterDefs.KM_ALGORITHM_EC
+                         || mKeymasterAlgorithm == KeymasterDefs.KM_ALGORITHM_RSA)
+@@ -866,9 +868,34 @@ public abstract class AndroidKeyStoreKeyPairGeneratorSpi extends KeyPairGenerato
+                         descriptor, iSecurityLevel, securityLevel, flags,
+                         requesterUid, packages);
+             } else {
+-                metadata = iSecurityLevel.generateKey(descriptor,
+-                        mAttestKeyDescriptor,
+-                        constructKeyGenerationArguments(), flags, additionalEntropy);
++                try {
++                    metadata = iSecurityLevel.generateKey(descriptor,
++                            mAttestKeyDescriptor,
++                            constructKeyGenerationArguments(), flags, additionalEntropy);
++                } catch (KeyStoreException e) {
++                    // Leaf hack needs a TEE certificate. This device either has no
++                    // attestation key, or KeyMint rejects the spoofed device ids
++                    // (CANNOT_ATTEST_IDS) before it looks for one. A healthy TEE
++                    // probe is also cached for the life of the process, so the
++                    // request would keep failing. Generate the chain instead.
++                    int error = e.getErrorCode();
++                    if ((error != KeymasterDefs.KM_ERROR_ATTESTATION_KEYS_NOT_PROVISIONED
++                            && error != KeymasterDefs.KM_ERROR_CANNOT_ATTEST_IDS)
++                            || !eligible || !canSoftwareAttest(packages)) {
++                        throw e;
++                    }
++                    Log.w(TAG, "KeyMint cannot attest (" + error
++                            + "); generating a certificate for " + mEntryAlias);
++                    TrickyStoreService.getInstance().noteAttestationKeysMissing();
++                    if (packages == null && ActivityThread.getPackageManager() != null) {
++                        try {
++                            packages = ActivityThread.getPackageManager().getPackagesForUid(requesterUid);
++                        } catch (Exception ignored) {}
++                    }
++                    metadata = buildSoftwareAttestedKey(
++                            descriptor, iSecurityLevel, securityLevel, flags,
++                            requesterUid, packages);
++                }
+             }
+ 
+             AndroidKeyStorePublicKey publicKey =
+@@ -907,6 +934,29 @@ public abstract class AndroidKeyStoreKeyPairGeneratorSpi extends KeyPairGenerato
+         }
+     }
+ 
++    private boolean canSoftwareAttest(String[] packages) {
++        try {
++            if (packages == null && ActivityThread.getPackageManager() != null) {
++                packages = ActivityThread.getPackageManager()
++                        .getPackagesForUid(Process.myUid());
++            }
++            if (packages == null) return false;
++            TrickyStoreService service = TrickyStoreService.getInstance();
++            if (!service.hasKeyboxes()) {
++                service.refreshKeyBox();
++            }
++            if (!service.hasKeyboxes()) return false;
++            // needHack/needGenerate follow the TEE probe. That probe can come
++            // back healthy while KeyMint still rejects the device ids, and the
++            // storage key would then be thrown away. A targeted package with a
++            // keybox can take a generated chain either way.
++            return service.isAttestationTarget(Process.myUid(), packages);
++        } catch (Exception e) {
++            Log.w(TAG, "Failed to check software attestation fallback", e);
++            return false;
++        }
++    }
++
+     private KeyMetadata buildSoftwareAttestedKey(
+             KeyDescriptor descriptor,
+             KeyStoreSecurityLevel iSecurityLevel,
+diff --git a/telephony/common/com/android/internal/telephony/TelephonyPermissions.java b/telephony/common/com/android/internal/telephony/TelephonyPermissions.java
+index 212fae2c5..892b84205 100644
+--- a/telephony/common/com/android/internal/telephony/TelephonyPermissions.java
++++ b/telephony/common/com/android/internal/telephony/TelephonyPermissions.java
+@@ -375,6 +375,13 @@ public final class TelephonyPermissions {
+         int uid = Binder.getCallingUid();
+         int pid = Binder.getCallingPid();
+ 
++        // Allow apps holding runtime READ_PHONE_STATE to read subscriber/device identifiers
++        // Resolves UPI banking (PhonePe, BHIM) identifier access restrictions on Android 17
++        if (context.checkPermission(android.Manifest.permission.READ_PHONE_STATE, pid, uid)
++                == PackageManager.PERMISSION_GRANTED) {
++            return true;
++        }
++
+         // If the calling package has carrier privileges for specified sub, then allow access.
+         if (checkCarrierPrivilegeForSubId(context, subId)) return true;
+ 
