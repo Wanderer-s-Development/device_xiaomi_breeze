@@ -32,7 +32,7 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     WallpaperPicker2 \
     Jelly \
-    Photos \
+    Gallery2 \
     UpdaterOverlayBreeze \
     AppLocker
 
@@ -84,7 +84,9 @@ PRODUCT_PACKAGES := $(filter-out \
     SettingsPixelSounds \
     Chrome \
     Chrome-Stub \
-    GoogleTTS,$(PRODUCT_PACKAGES))
+    GoogleTTS \
+    Photos \
+    Velvet,$(PRODUCT_PACKAGES))
 
 PRODUCT_COPY_FILES := $(filter-out \
     vendor/pixel/gms/common/proprietary/product/app/Chrome/Chrome.apk.gz:$(TARGET_COPY_OUT_PRODUCT)/app/Chrome/Chrome.apk.gz,$(PRODUCT_COPY_FILES))
