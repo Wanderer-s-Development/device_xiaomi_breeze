@@ -9,7 +9,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/custom_breeze.mk \
     $(LOCAL_DIR)/halcyon_breeze.mk \
     $(LOCAL_DIR)/infinity_breeze.mk \
-    $(LOCAL_DIR)/lineage_breeze.mk
+    $(LOCAL_DIR)/lineage_breeze.mk \
+    $(LOCAL_DIR)/rising_breeze.mk
 
 COMMON_LUNCH_CHOICES := \
     clover_breeze-cp2a-user \
@@ -22,4 +23,6 @@ COMMON_LUNCH_CHOICES := \
     halcyon_breeze-bp4a-userdebug \
     infinity_breeze-user \
     lineage_breeze-user \
-    lineage_breeze-userdebug
+    lineage_breeze-userdebug \
+    rising_breeze-cp2a-user \
+    rising_breeze-cp2a-userdebug

@@ -66,3 +66,18 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.qs_bt_show_dialog=1 \
     persist.sys.qs_data_show_dialog=1
+
+# RisingOS compatibility hook (for riseup / lineage_breeze builds on RisingOS)
+ifneq ($(wildcard vendor/rising),)
+RISING_MAINTAINER ?= Wanderer
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Snapdragon 4 Gen 2 AE" \
+    RisingMaintainer="Wanderer"
+WITH_GMS := true
+TARGET_USES_PICO_GAPPS := true
+TARGET_CORE_GMS := true
+PRODUCT_NO_CAMERA := false
+PRODUCT_PACKAGES += Aperture
+TARGET_ENABLE_BLUR := true
+TARGET_HAS_UDFPS := false
+endif
