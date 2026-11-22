@@ -91,7 +91,8 @@ PRODUCT_PACKAGES := $(filter-out \
     Velvet \
     WellbeingPrebuilt \
     DevicePersonalizationAiAiPrebuiltPixel2025 \
-    DeviceIntelligenceNetworkPrebuiltAstrea,$(PRODUCT_PACKAGES))
+    DeviceIntelligenceNetworkPrebuiltAstrea \
+    GoogleSettingsOverlay,$(PRODUCT_PACKAGES))
 
 PRODUCT_COPY_FILES := $(filter-out \
     vendor/pixel/gms/common/proprietary/product/app/Chrome/Chrome.apk.gz:$(TARGET_COPY_OUT_PRODUCT)/app/Chrome/Chrome.apk.gz,$(PRODUCT_COPY_FILES))
