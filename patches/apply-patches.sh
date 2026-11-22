@@ -66,7 +66,7 @@ apply_patch_folder() {
         )
     elif [ "${target_flavor}" == "infinityx" ]; then
         PATCH_MAP=(
-            ["bootable_recovery"]="bootable/recovery"
+            ["device_lineage_sepolicy"]="device/lineage/sepolicy"
             ["frameworks_base"]="frameworks/base"
             ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
             ["packages_apps_Settings"]="packages/apps/Settings"
@@ -81,6 +81,7 @@ apply_patch_folder() {
     elif [ "${target_flavor}" == "lineage" ]; then
         PATCH_MAP=(
             ["bootable_recovery"]="bootable/recovery"
+            ["device_lineage_sepolicy"]="device/lineage/sepolicy"
             ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
             ["system_update_engine"]="system/update_engine"
         )
