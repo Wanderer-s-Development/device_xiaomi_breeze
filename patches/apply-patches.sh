@@ -27,11 +27,13 @@ if [ -z "${ROM_TARGET}" ]; then
         ROM_TARGET="infinityx"
     elif [ -n "${CRDROID_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/crdroid-priv" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/crDroidOTA" ]; then
         ROM_TARGET="crdroid"
+    elif [ -n "${CUSTOM_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/custom" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/pixel" ]; then
+        ROM_TARGET="pixelos"
     elif [ -n "${LINEAGE_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/lineage" ]; then
         ROM_TARGET="lineage"
     else
         echo "[!] No ROM specified and could not auto-detect."
-        echo "    Usage: $0 [clover|crdroid|infinityx|lineage|all]"
+        echo "    Usage: $0 [clover|crdroid|infinityx|lineage|pixelos|all]"
         exit 1
     fi
 fi
@@ -89,6 +91,10 @@ apply_patch_folder() {
             ["bootable_recovery"]="bootable/recovery"
             ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
             ["system_update_engine"]="system/update_engine"
+        )
+    elif [ "${target_flavor}" == "pixelos" ]; then
+        PATCH_MAP=(
+            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
         )
     fi
 
@@ -161,15 +167,19 @@ case "${ROM_TARGET}" in
     lineage)
         apply_patch_folder "lineage"
         ;;
+    pixelos)
+        apply_patch_folder "pixelos"
+        ;;
     all)
         apply_patch_folder "clover"
         apply_patch_folder "crdroid"
         apply_patch_folder "infinityx"
         apply_patch_folder "lineage"
+        apply_patch_folder "pixelos"
         ;;
     *)
         echo "[!] Unknown target: ${ROM_TARGET}"
-        echo "    Valid options: clover, crdroid, infinityx, lineage, all"
+        echo "    Valid options: clover, crdroid, infinityx, lineage, pixelos, all"
         exit 1
         ;;
 esac
