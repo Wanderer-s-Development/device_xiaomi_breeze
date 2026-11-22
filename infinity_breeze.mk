@@ -86,7 +86,8 @@ PRODUCT_PACKAGES := $(filter-out \
     Chrome-Stub \
     GoogleTTS \
     Photos \
-    Velvet,$(PRODUCT_PACKAGES))
+    Velvet \
+    WellbeingPrebuilt,$(PRODUCT_PACKAGES))
 
 PRODUCT_COPY_FILES := $(filter-out \
     vendor/pixel/gms/common/proprietary/product/app/Chrome/Chrome.apk.gz:$(TARGET_COPY_OUT_PRODUCT)/app/Chrome/Chrome.apk.gz,$(PRODUCT_COPY_FILES))
