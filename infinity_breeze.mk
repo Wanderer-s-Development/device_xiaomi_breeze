@@ -71,8 +71,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.qs_bt_show_dialog=0 \
     persist.sys.qs_data_show_dialog=0
 
-# Strip unwanted accessibility, enterprise, auto, sounds, speech, and browser bloat
+# Strip unwanted accessibility, enterprise, auto, sounds, speech, browser, and duplicate AOSP apps
 PRODUCT_PACKAGES := $(filter-out \
+    Dialer \
+    messaging \
     AndroidAutoStubPrebuilt \
     talkback \
     SwitchAccessPrebuilt_1.17.0.877181440 \
