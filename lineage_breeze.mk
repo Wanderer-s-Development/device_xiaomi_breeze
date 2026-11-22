@@ -13,8 +13,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Builder / Maintainer
 BUILD_USERNAME := Wanderer
 
-# Build type: RELEASE (no official or unofficial)
-LINEAGE_BUILDTYPE := RELEASE
+# Build type: UNOFFICIAL
+LINEAGE_BUILDTYPE := UNOFFICIAL
 
 # MindTheGapps build flag (default to false for vanilla LineageOS)
 WITH_GAPPS ?= false

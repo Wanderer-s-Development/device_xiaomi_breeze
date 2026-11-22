@@ -1,0 +1,101 @@
+From ffd75506df4688e4e109b57b687c75e1eb9ee9be Mon Sep 17 00:00:00 2001
+From: Wanderer <331453264+nithishlabs08@users.noreply.github.com>
+Date: Sun, 22 Nov 2026 04:58:30 +0000
+Subject: [PATCH] recovery: Prompt user on build-tag mismatch and unverified
+ packages in user builds
+
+Change-Id: I0d8ce08f1e7ab82ec79d307ce6e54e31d4f3f3ea
+---
+ install/install.cpp | 11 +++++++----
+ recovery.cpp        | 37 +++++++++++++++----------------------
+ 2 files changed, 22 insertions(+), 26 deletions(-)
+
+diff --git a/install/install.cpp b/install/install.cpp
+index 2e8b7655..26edef65 100644
+--- a/install/install.cpp
++++ b/install/install.cpp
+@@ -69,6 +69,7 @@ bool ask_to_cancel_ota(Device* device);
+ bool ask_to_continue_unverified(Device* device);
+ bool ask_to_continue_downgrade(Device* device);
+ bool ask_to_continue_spl_downgrade(Device* device);
++bool ask_to_continue_tag_mismatch(Device* device);
+ 
+ static constexpr int kRecoveryApiVersion = 3;
+ // We define RECOVERY_API_VERSION in Android.mk, which will be picked up by build system and packed
+@@ -200,13 +201,15 @@ static bool CheckAbSpecificMetadata(const std::map<std::string, std::string>& me
+   }
+   const auto post_build = get_value(metadata, "post-build");
+   const auto build_fingerprint = android::base::Tokenize(post_build, "/");
+-  if (!build_fingerprint.empty() && android::base::GetProperty("ro.build.type", "") == "user") {
++  if (!build_fingerprint.empty()) {
+     const auto& post_build_tag = build_fingerprint.back();
+     const auto build_tag = android::base::GetProperty("ro.build.tags", "");
+     if (build_tag != post_build_tag) {
+-      LOG(ERROR) << "Post build-tag " << post_build_tag << " does not match device build tag "
+-                 << build_tag;
+-      return false;
++      LOG(WARNING) << "Post build-tag " << post_build_tag << " does not match device build tag "
++                   << build_tag;
++      if (!ui->IsTextVisible() || !ask_to_continue_tag_mismatch(ui->GetDevice())) {
++        return false;
++      }
+     }
+   }
+ 
+diff --git a/recovery.cpp b/recovery.cpp
+index 44c7261f..f838134b 100644
+--- a/recovery.cpp
++++ b/recovery.cpp
+@@ -179,34 +179,27 @@ bool ask_to_ab_reboot(Device* device) {
+ }
+ 
+ bool ask_to_continue_unverified(Device* device) {
+-  if (get_build_type() == "user") {
+-    return false;
+-  } else {
+-    device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
+-    return yes_no(device, "Signature verification failed", "Install anyway?");
+-  }
++  device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
++  return yes_no(device, "Signature verification failed", "Install anyway?");
+ }
+ 
+ bool ask_to_continue_downgrade(Device* device) {
+-  if (get_build_type() == "user") {
+-    return false;
+-  } else {
+-    device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
+-    return yes_no(device, "This package will downgrade your system", "Install anyway?");
+-  }
++  device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
++  return yes_no(device, "This package will downgrade your system", "Install anyway?");
+ }
+ 
+ bool ask_to_continue_spl_downgrade(Device* device) {
+-  if (get_build_type() == "user") {
+-    return false;
+-  } else {
+-    device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
+-    return yes_no(device,
+-      "WARNING: Security patch level downgrade detected. "
+-      "This may require formatting data. "
+-      "Device may brick if hardware rollback protection is enabled. ",
+-      "Install anyway?");
+-  }
++  device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
++  return yes_no(device,
++    "WARNING: Security patch level downgrade detected. "
++    "This may require formatting data. "
++    "Device may brick if hardware rollback protection is enabled. ",
++    "Install anyway?");
++}
++
++bool ask_to_continue_tag_mismatch(Device* device) {
++  device->GetUI()->SetProgressType(RecoveryUI::EMPTY);
++  return yes_no(device, "Post build-tag does not match device build-tag", "Install anyway?");
+ }
+ 
+ static bool ask_to_wipe_data(Device* device) {
+-- 
+2.43.0
+
