@@ -153,7 +153,8 @@ PRODUCT_PACKAGES += \
 
 # Fastbootd
 PRODUCT_PACKAGES += \
-    fastbootd
+    fastbootd \
+    ziptool.recovery
 
 # Fingerprint
 PRODUCT_PACKAGES += \
