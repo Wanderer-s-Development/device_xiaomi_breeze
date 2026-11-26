@@ -45,102 +45,83 @@ echo " Build Root : ${ANDROID_BUILD_TOP}"
 echo " Patches Dir: ${PATCHES_ROOT}"
 echo "=========================================================="
 
+applied=0
+skipped=0
+failed=0
+
+apply_patch_dir() {
+    local patch_subdir="$1"
+    local target_rel="$2"
+    local target_repo="${ANDROID_BUILD_TOP}/${target_rel}"
+
+    if [ ! -d "${patch_subdir}" ]; then
+        return 0
+    fi
+
+    if [ ! -d "${target_repo}" ]; then
+        echo "[-] Skipping ${target_rel}: Target directory ${target_repo} does not exist"
+        return 0
+    fi
+
+    echo "[*] Repository: ${target_rel}"
+
+    for patch_file in "${patch_subdir}"/*.patch; do
+        [ -e "${patch_file}" ] || continue
+        local patch_name="$(basename "${patch_file}")"
+
+        if git -C "${target_repo}" apply --check --reverse "${patch_file}" >/dev/null 2>&1; then
+            echo "    [ALREADY APPLIED] ${patch_name}"
+            skipped=$((skipped + 1))
+            continue
+        fi
+
+        if git -C "${target_repo}" apply --check "${patch_file}" >/dev/null 2>&1; then
+            if git -C "${target_repo}" am -3 "${patch_file}" >/dev/null 2>&1; then
+                echo "    [APPLIED via git am] ${patch_name}"
+                applied=$((applied + 1))
+            elif git -C "${target_repo}" apply "${patch_file}" >/dev/null 2>&1; then
+                echo "    [APPLIED via git apply] ${patch_name}"
+                applied=$((applied + 1))
+            else
+                echo "    [FAILED] ${patch_name}"
+                failed=$((failed + 1))
+            fi
+        else
+            echo "    [CONFLICT / CANNOT APPLY] ${patch_name}"
+            failed=$((failed + 1))
+        fi
+    done
+}
+
 apply_patch_folder() {
     local target_flavor="$1"
     local flavor_dir="${PATCHES_ROOT}/${target_flavor}"
 
-    if [ ! -d "${flavor_dir}" ]; then
-        echo "[-] Flavor directory ${flavor_dir} not found, skipping."
-        return 0
-    fi
+    applied=0
+    skipped=0
+    failed=0
 
     echo ""
     echo ">>> Applying [${target_flavor}] patches..."
 
-    declare -A PATCH_MAP=()
+    # Common ConsumerIr patch applies to all supported ROMs
+    apply_patch_dir "${PATCHES_ROOT}/common/hardware_lineage_interfaces" "hardware/lineage/interfaces"
 
-    if [ "${target_flavor}" == "crdroid" ]; then
-        PATCH_MAP=(
-            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
-        )
-    elif [ "${target_flavor}" == "infinityx" ]; then
-        PATCH_MAP=(
-            ["device_lineage_sepolicy"]="device/lineage/sepolicy"
-            ["frameworks_base"]="frameworks/base"
-            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
-            ["packages_apps_Settings"]="packages/apps/Settings"
-            ["packages_apps_WallpaperPicker2"]="packages/apps/WallpaperPicker2"
-            ["system_update_engine"]="system/update_engine"
-            ["vendor_extras"]="vendor/extras"
-            ["vendor_infinity"]="vendor/infinity"
-            ["vendor_pixel_gms"]="vendor/pixel/gms"
-            ["vendor_pixel_sounds"]="vendor/pixel/sounds"
-            ["vendor_pixel_themepicker"]="vendor/pixel/themepicker"
-        )
+    if [ "${target_flavor}" == "infinityx" ]; then
+        apply_patch_dir "${PATCHES_ROOT}/common/system_update_engine" "system/update_engine"
+        apply_patch_dir "${flavor_dir}/device_lineage_sepolicy" "device/lineage/sepolicy"
+        apply_patch_dir "${flavor_dir}/frameworks_base" "frameworks/base"
+        apply_patch_dir "${flavor_dir}/packages_apps_Settings" "packages/apps/Settings"
+        apply_patch_dir "${flavor_dir}/packages_apps_WallpaperPicker2" "packages/apps/WallpaperPicker2"
+        apply_patch_dir "${flavor_dir}/vendor_extras" "vendor/extras"
+        apply_patch_dir "${flavor_dir}/vendor_infinity" "vendor/infinity"
+        apply_patch_dir "${flavor_dir}/vendor_pixel_gms" "vendor/pixel/gms"
+        apply_patch_dir "${flavor_dir}/vendor_pixel_sounds" "vendor/pixel/sounds"
+        apply_patch_dir "${flavor_dir}/vendor_pixel_themepicker" "vendor/pixel/themepicker"
     elif [ "${target_flavor}" == "lineage" ]; then
-        PATCH_MAP=(
-            ["bootable_recovery"]="bootable/recovery"
-            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
-            ["system_update_engine"]="system/update_engine"
-        )
-    elif [ "${target_flavor}" == "pixelos" ]; then
-        PATCH_MAP=(
-            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
-        )
-    elif [ "${target_flavor}" == "risingos" ]; then
-        PATCH_MAP=(
-            ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
-        )
+        apply_patch_dir "${PATCHES_ROOT}/common/system_update_engine" "system/update_engine"
+        apply_patch_dir "${flavor_dir}/bootable_recovery" "bootable/recovery"
     fi
-
-    local applied=0
-    local skipped=0
-    local failed=0
-
-    for dir_key in "${!PATCH_MAP[@]}"; do
-        local target_repo="${ANDROID_BUILD_TOP}/${PATCH_MAP[$dir_key]}"
-        local patch_subdir="${flavor_dir}/${dir_key}"
-
-        if [ ! -d "${target_repo}" ]; then
-            echo "[-] Skipping ${dir_key}: Target directory ${target_repo} does not exist"
-            continue
-        fi
-
-        if [ ! -d "${patch_subdir}" ]; then
-            continue
-        fi
-
-        echo "[*] Repository: ${PATCH_MAP[$dir_key]}"
-
-        for patch_file in "${patch_subdir}"/*.patch; do
-            [ -e "${patch_file}" ] || continue
-            local patch_name="$(basename "${patch_file}")"
-
-            # Check if already applied (reverse applies cleanly)
-            if git -C "${target_repo}" apply --check --reverse "${patch_file}" >/dev/null 2>&1; then
-                echo "    [ALREADY APPLIED] ${patch_name}"
-                skipped=$((skipped + 1))
-                continue
-            fi
-
-            # Check if can apply forward
-            if git -C "${target_repo}" apply --check "${patch_file}" >/dev/null 2>&1; then
-                if git -C "${target_repo}" am -3 "${patch_file}" >/dev/null 2>&1; then
-                    echo "    [APPLIED via git am] ${patch_name}"
-                    applied=$((applied + 1))
-                elif git -C "${target_repo}" apply "${patch_file}" >/dev/null 2>&1; then
-                    echo "    [APPLIED via git apply] ${patch_name}"
-                    applied=$((applied + 1))
-                else
-                    echo "    [FAILED] ${patch_name}"
-                    failed=$((failed + 1))
-                fi
-            else
-                echo "    [CONFLICT / CANNOT APPLY] ${patch_name}"
-                failed=$((failed + 1))
-            fi
-        done
-    done
 
     echo "--- Summary [${target_flavor}]: ${applied} applied, ${skipped} already applied, ${failed} failed ---"
     if [ ${failed} -gt 0 ]; then
@@ -150,27 +131,13 @@ apply_patch_folder() {
 }
 
 case "${ROM_TARGET}" in
-    crdroid)
-        apply_patch_folder "crdroid"
-        ;;
-    infinityx)
-        apply_patch_folder "infinityx"
-        ;;
-    lineage)
-        apply_patch_folder "lineage"
-        ;;
-    pixelos)
-        apply_patch_folder "pixelos"
-        ;;
-    risingos)
-        apply_patch_folder "risingos"
+    crdroid|infinityx|lineage|pixelos|risingos)
+        apply_patch_folder "${ROM_TARGET}"
         ;;
     all)
-        apply_patch_folder "crdroid"
-        apply_patch_folder "infinityx"
-        apply_patch_folder "lineage"
-        apply_patch_folder "pixelos"
-        apply_patch_folder "risingos"
+        for flavor in crdroid infinityx lineage pixelos risingos; do
+            apply_patch_folder "${flavor}"
+        done
         ;;
     *)
         echo "[!] Unknown target: ${ROM_TARGET}"
