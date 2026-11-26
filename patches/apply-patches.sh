@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 #
-# SPDX-FileCopyrightText: 2026 Project Infinity-X & The Clover Project
+# SPDX-FileCopyrightText: 2026 Project Infinity-X
 # SPDX-License-Identifier: Apache-2.0
 #
 # Automated patch applicator for Xiaomi Breeze (Redmi 13 5G / POCO M6 Plus 5G)
-# Supports: Clover and Infinity-X
+# Supports: Infinity-X, crDroid, LineageOS, PixelOS, RisingOS
 #
 
 set -e
@@ -21,9 +21,7 @@ ANDROID_BUILD_TOP="$(cd "${PATCHES_ROOT}/../../../.." && pwd)"
 ROM_TARGET="${1:-}"
 
 if [ -z "${ROM_TARGET}" ]; then
-    if [ -n "${CLOVER_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/clover" ]; then
-        ROM_TARGET="clover"
-    elif [ -n "${INFINITY_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/infinity" ]; then
+    if [ -n "${INFINITY_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/infinity" ]; then
         ROM_TARGET="infinityx"
     elif [ -n "${CRDROID_BUILD}" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/crdroid-priv" ] || [ -d "${ANDROID_BUILD_TOP}/vendor/crDroidOTA" ]; then
         ROM_TARGET="crdroid"
@@ -35,7 +33,7 @@ if [ -z "${ROM_TARGET}" ]; then
         ROM_TARGET="lineage"
     else
         echo "[!] No ROM specified and could not auto-detect."
-        echo "    Usage: $0 [clover|crdroid|infinityx|lineage|pixelos|risingos|all]"
+        echo "    Usage: $0 [crdroid|infinityx|lineage|pixelos|risingos|all]"
         exit 1
     fi
 fi
@@ -61,16 +59,7 @@ apply_patch_folder() {
 
     declare -A PATCH_MAP=()
 
-    if [ "${target_flavor}" == "clover" ]; then
-        PATCH_MAP=(
-            ["hardware_clover_interfaces"]="hardware/clover/interfaces"
-            ["packages_apps_WallpaperPicker2"]="packages/apps/WallpaperPicker2"
-            ["system_update_engine"]="system/update_engine"
-            ["vendor_pixel_gms"]="vendor/pixel/gms"
-            ["vendor_pixel_sounds"]="vendor/pixel/sounds"
-            ["vendor_prebuilts"]="vendor/prebuilts"
-        )
-    elif [ "${target_flavor}" == "crdroid" ]; then
+    if [ "${target_flavor}" == "crdroid" ]; then
         PATCH_MAP=(
             ["hardware_lineage_interfaces"]="hardware/lineage/interfaces"
         )
@@ -161,9 +150,6 @@ apply_patch_folder() {
 }
 
 case "${ROM_TARGET}" in
-    clover)
-        apply_patch_folder "clover"
-        ;;
     crdroid)
         apply_patch_folder "crdroid"
         ;;
@@ -180,7 +166,6 @@ case "${ROM_TARGET}" in
         apply_patch_folder "risingos"
         ;;
     all)
-        apply_patch_folder "clover"
         apply_patch_folder "crdroid"
         apply_patch_folder "infinityx"
         apply_patch_folder "lineage"
@@ -189,7 +174,7 @@ case "${ROM_TARGET}" in
         ;;
     *)
         echo "[!] Unknown target: ${ROM_TARGET}"
-        echo "    Valid options: clover, crdroid, infinityx, lineage, pixelos, risingos, all"
+        echo "    Valid options: crdroid, infinityx, lineage, pixelos, risingos, all"
         exit 1
         ;;
 esac
